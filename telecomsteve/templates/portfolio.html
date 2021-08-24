@@ -3,7 +3,24 @@
     <div class="main">
         <h2>Cloud Native Portfolio</h2>
         <p>A selection of my cloud native and infrastructure as code (IaC) programming.</p>
+        
+        <div class="portfolio-container">
+            <div class="portfolio-container_text">
+                <h3 class="portfolio_accent">Homelab Research Testbed</h3>
 
+                <p>Homelab is my personal sandbox for hosting and testing microservices in the cloud.
+                    The environment runs an autoscaling instance of Kubernetes with a Nginx ingress to load balance traffic to the outside world. 
+                    Both the Kubernetes cluster itself and microservices within have been deployed using a mix of Terraform, Helm, Ansible and Bash scripting. 
+                    Full documentation is located within the repositories wiki pages on github.
+                </p>
+
+                <p><a target="blank" href="https://github.com/stevenplatt/homelab">Gitub Source</a></p>
+            </div>
+            <div class="portfolio-container_text">
+                <img class="portfolio_image" src="./img/k8s_logo.webp" alt="Kubernetes">
+            </div>
+        </div>
+        
         <div class="portfolio-container">
             <div class="portfolio-container_text">
                 <h3 class="portfolio_accent">telecomsteve.com</h3>
