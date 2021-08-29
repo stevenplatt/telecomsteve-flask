@@ -1,0 +1,5 @@
+# Flask Framewor
+Flask==2.0.1
+
+# Database Storage
+Flask-SQLAlchemy==2.4.0
