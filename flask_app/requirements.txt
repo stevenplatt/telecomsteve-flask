@@ -3,3 +3,6 @@ Flask==2.0.1
 
 # Database Storage
 Flask-SQLAlchemy==2.4.0
+
+# Requests
+Requests==2.26.0
