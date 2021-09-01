@@ -3,10 +3,16 @@
     <div w3-include-html="../navbar_index.html"></div>
         <div class="main">
         <h2>Engineering News</h2>
-            <p>A feed of the most popular stories from Hacker News.</p>
+            <p>A feed of the twenty most popular stories from Hacker News.</p>
 
             <br>
 
-        <h3 class="research_accent">Coming Soon...</h3>    
+            {% for key,value in news.items() %}
+                {% for key, story in value.items() %}
+                    <h3><a href="{{ story }}" class="resume_accent" target="_blank">{{ key }}</a></h3>
+                    <br>
+                {% endfor %}
+            {% endfor %}
+
     </div>
 {% endblock content %}
