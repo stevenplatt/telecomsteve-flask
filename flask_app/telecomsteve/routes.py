@@ -49,8 +49,8 @@ def home():
 
 @app.route("/news", methods=["GET"])
 def news():
-    count = range(20) # number of stories to display
-    nthreads = 40 # number 
+    count = range(50) # number of stories to display
+    nthreads = 50 # number 
 
     def worker(count, outdict):
         """ The worker function, invoked in a thread. 'nums' is a
