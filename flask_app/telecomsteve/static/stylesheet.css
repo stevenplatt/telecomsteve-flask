@@ -81,6 +81,25 @@ body {
 	color: #3498db;
 }
 
+.news_accent {
+	color: #3498db;
+}
+
+.news_accent a {
+	color: #3498db;
+}
+
+.news_accent a:visited {
+	color: #CDD0D4;
+}
+
+.news_domain {
+	font-size: .9em;
+	margin-left: .5em;
+	color: #818181;
+	font-weight: normal;
+}
+
 a {
 	color: #3498db;
 	text-decoration: none;

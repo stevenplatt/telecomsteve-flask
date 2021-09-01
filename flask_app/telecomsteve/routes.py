@@ -1,25 +1,31 @@
 from flask import render_template, url_for, flash, redirect, request, session, abort 
-from telecomsteve import app, db
-# from telecomsteve.db_models import Contract, Peer, Host, Block
-from telecomsteve.hackernews import Item, User, HackerNews
-# from random import randint
-# from datetime import datetime
+from telecomsteve import app
+from telecomsteve.hackernews import HackerNews
 import socket
 import threading
 import math
+from urllib.parse import urlparse
 
 def get_host_ip():
-    host_name = socket.gethostname() 
-    host_ip = socket.gethostbyname(host_name) 
-    return host_ip
+    return socket.gethostbyname(socket.gethostname()) 
 
 def news_singleton(num):
     hn = HackerNews()
     stories = hn.top_stories()
-    news_dict = {}
+    news_dict = {"Title":[],"URL":[],"Domain":[], "Score":[]}
     try:
         website = hn.item(stories[num])
-        news_dict[str(website.title)] = str(website.url)
+
+        # instructions: https://stackoverflow.com/questions/1521592/get-root-domain-of-link
+        parsed_uri = urlparse(str(website.url))
+        domain = '{uri.netloc}'.format(uri=parsed_uri)
+        domain = domain.replace('www.', '')
+
+        # add story details to dictionary
+        news_dict["Title"] = (str(website.title))
+        news_dict["URL"] = (str(website.url))
+        news_dict["Domain"] = domain
+        news_dict["Score"] = (str(website.score))
     except:
         pass
     return(news_dict) 
@@ -33,17 +39,8 @@ def home():
         return render_template('index.html')
 
     else:
-
         my_ip = get_host_ip()
         my_id = get_peer_id()
-        peer_list_full = Peer.query.all()
-
-        contract_page = request.args.get('contract_page', 1, type=int)
-        contract_list = Contract.query.paginate(page=contract_page, per_page=3)
-        contract_list_full = Contract.query.all()
-        block_page = request.args.get('block_page', 1, type=int)
-        block_list = Block.query.order_by(Block.time_stamp.desc()).paginate(page=block_page, per_page=5)
-
         return render_template('index.html')
 
 
@@ -80,7 +77,8 @@ def news():
         t.join()
 
     # Merge all partial output dicts into a single dict and return it
-    output = ({k: v for out_d in outs for k, v in out_d.items()})
+    output = ({k: v for out_d in outs for k, v in out_d.items()}).values()
+    
 
     return render_template('news.html', news=output)
 
@@ -95,38 +93,6 @@ def research():
 @app.route("/resume")
 def resume():
     return render_template('resume.html')
-
-
-
-# @app.route("/nodes", methods=["GET", "POST"])
-# def nodes():
-
-#     if request.method == "POST" and "peer_hostid" in request.form:
-
-#         peer = request.form
-
-#         new_peer = Peer(public_key=peer.get("peer_hostid"), ip=peer.get("peer_ip"), contract=peer.get("allowed_contract"))
-#         db.session.add(new_peer)
-#         db.session.commit()
-#         print("this method is for a new peer")
-
-#         return redirect(url_for('nodes'))
-
-#     elif request.method == "POST" and "tps" in request.form:
-
-#         print("this method is for benchmarking")
-
-#         return redirect(url_for('nodes'))
-    
-#     else:
-#         my_ip = get_host_ip()
-#         my_id = get_peer_id()
-#         peer_page = request.args.get('peer_page', 1, type=int)
-#         peer_list = Peer.query.paginate(page=peer_page, per_page=10)
-#         peer_list_full = Peer.query.all()
-#         contract_list = Contract.query.all()
-
-#         return render_template('nodes.html', title='Nodes', about=about, ip=my_ip, id=my_id, peers=peer_list, peers_full=peer_list_full, contracts_full=contract_list, peer_page=peer_page)
 
 @app.route("/login", methods=['POST'])
 def login():
