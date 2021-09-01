@@ -39,8 +39,6 @@ def home():
         return render_template('index.html')
 
     else:
-        my_ip = get_host_ip()
-        my_id = get_peer_id()
         return render_template('index.html')
 
 
