@@ -14,7 +14,7 @@ RUN pip3 install -r requirements.txt
 
 COPY ./flask_app /app
 
-# ENTRYPOINT [ "python3" ]
+ENTRYPOINT ["/bin/bash"]
 
 # start flask process and push it to the background
 # https://www.py4u.net/discuss/159302
