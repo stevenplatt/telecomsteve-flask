@@ -1,10 +1,12 @@
+from flask import Flask
 from flask import render_template, url_for, flash, redirect, request, session, abort 
-from telecomsteve import app
-from telecomsteve.hackernews import HackerNews
+from hackernews import HackerNews
 import socket
 import threading
 import math
 from urllib.parse import urlparse
+
+application = Flask(__name__)
 
 def get_host_ip():
     return socket.gethostbyname(socket.gethostname()) 
@@ -30,19 +32,12 @@ def news_singleton(num):
         pass
     return(news_dict) 
 
-@app.route("/")
+@application.route("/")
 def home():
-    # if not session.get('logged_in'):
-    #     return render_template('login_form.html', title='Login')
-
-    if not session.get('logged_in'):
-        return render_template('index.html')
-
-    else:
-        return render_template('index.html')
+    return render_template('index.html')
 
 
-@app.route("/news", methods=["GET"])
+@application.route("/news", methods=["GET"])
 def news():
     count = range(50) # number of stories to display
     nthreads = 50 # number 
@@ -80,19 +75,19 @@ def news():
 
     return render_template('news.html', news=output)
 
-@app.route("/portfolio")
+@application.route("/portfolio")
 def portfolio():
     return render_template('portfolio.html')
 
-@app.route("/research")
+@application.route("/research")
 def research():
     return render_template('research.html')
 
-@app.route("/resume")
+@application.route("/resume")
 def resume():
     return render_template('resume.html')
 
-@app.route("/login", methods=['POST'])
+@application.route("/login", methods=['POST'])
 def login():
     if request.form['password'] == 'spectrum' and request.form['username'] == 'admin':
         session['logged_in'] = True
@@ -100,7 +95,14 @@ def login():
         flash('wrong password!')
     return home()
 
-@app.route("/logout")
+@application.route("/logout")
 def logout():
     session['logged_in'] = False
     return home()
+
+# run the app.
+if __name__ == "__main__":
+    # Setting debug to True enables debug output. This line should be
+    # removed before deploying a production app.
+    application.debug = True
+    application.run()
