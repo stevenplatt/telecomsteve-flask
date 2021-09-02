@@ -1,3 +1,6 @@
+# Instructions for deployment to AWS Elastic Beanstalk
+# https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html
+
 from flask import Flask
 from flask import render_template, url_for, flash, redirect, request, session, abort 
 from hackernews import HackerNews
