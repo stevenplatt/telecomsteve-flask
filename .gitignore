@@ -1,3 +1,6 @@
+# Appleication cache
+app_cache*
+
 # AWS items
 .elasticbeanstalk*
 

@@ -3,6 +3,9 @@
 
 from datetime import datetime
 import requests
+import requests_cache
+
+requests_cache.install_cache('app_cache', backend='sqlite', expire_after=3600)
 
 
 class Item():
