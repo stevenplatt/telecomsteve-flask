@@ -1,4 +1,5 @@
 # build file to configure container for Dockerhub
+# Docker cheatsheet https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes
 
 FROM ubuntu:20.04
 
