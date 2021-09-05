@@ -2,17 +2,13 @@
 # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html
 
 from flask import Flask
-from flask import render_template, url_for, flash, redirect, request, session, abort 
+from flask import render_template
 from hackernews import HackerNews
-import socket
 import threading
 import math
 from urllib.parse import urlparse
 
 application = Flask(__name__)
-
-def get_host_ip():
-    return socket.gethostbyname(socket.gethostname()) 
 
 def news_singleton(num):
     hn = HackerNews()
@@ -38,7 +34,6 @@ def news_singleton(num):
 @application.route("/")
 def home():
     return render_template('index.html')
-
 
 @application.route("/news", methods=["GET"])
 def news():
@@ -74,7 +69,6 @@ def news():
 
     # Merge all partial output dicts into a single dict and return it
     output = ({k: v for out_d in outs for k, v in out_d.items()}).values()
-    
 
     return render_template('news.html', news=output)
 
@@ -89,19 +83,6 @@ def research():
 @application.route("/resume")
 def resume():
     return render_template('resume.html')
-
-@application.route("/login", methods=['POST'])
-def login():
-    if request.form['password'] == 'spectrum' and request.form['username'] == 'admin':
-        session['logged_in'] = True
-    else:
-        flash('wrong password!')
-    return home()
-
-@application.route("/logout")
-def logout():
-    session['logged_in'] = False
-    return home()
 
 # run the app.
 if __name__ == "__main__":

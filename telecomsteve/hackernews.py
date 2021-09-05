@@ -5,8 +5,9 @@ from datetime import datetime
 import requests
 import requests_cache
 
+# Instructions for adding caching to API requests
+# https://realpython.com/caching-external-api-requests/
 requests_cache.install_cache('app_cache', backend='sqlite', expire_after=3600)
-
 
 class Item():
     def __init__(self, **entries):
