@@ -1,5 +1,6 @@
 # Instructions for deployment to AWS Elastic Beanstalk
 # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html
+# push updated deployment using 'eb deploy' from within the folder telecomsteve/
 
 from flask import Flask
 from flask import render_template
