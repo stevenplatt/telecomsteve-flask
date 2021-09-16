@@ -2,12 +2,13 @@
 # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html
 # push updated deployment using 'eb deploy' from within the folder telecomsteve/
 
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template, request
 from hackernews import HackerNews
 import threading
 import math
 from urllib.parse import urlparse
+import requests
+import json
 
 application = Flask(__name__)
 
@@ -35,6 +36,18 @@ def news_singleton(num):
 @application.route("/")
 def home():
     return render_template('index.html')
+
+@application.route("/portfolio")
+def portfolio():
+    return render_template('portfolio.html')
+
+@application.route("/research")
+def research():
+    return render_template('research.html')
+
+@application.route("/resume")
+def resume():
+    return render_template('resume.html')
 
 @application.route("/news", methods=["GET"])
 def news():
@@ -73,17 +86,20 @@ def news():
 
     return render_template('news.html', news=output)
 
-@application.route("/portfolio")
-def portfolio():
-    return render_template('portfolio.html')
+@application.route("/weather", methods=["GET"])
+def weather():
 
-@application.route("/research")
-def research():
-    return render_template('research.html')
+    # stack overflow explanation
+    # https://stackoverflow.com/questions/12770950/flask-request-remote-addr-is-wrong-on-webfaction-and-not-showing-real-user-ip
+    headers_list = request.headers.getlist("X-Forwarded-For")
+    user_ip = headers_list[0] if headers_list else request.remote_addr
 
-@application.route("/resume")
-def resume():
-    return render_template('resume.html')
+    url = "https://freegeoip.app/json/" + '136.25.105.123' # temporarily setting the ip manually
+    headers = {'accept': "application/json",'content-type': "application/json"}
+    response = requests.request("GET", url, headers=headers)
+    geodata = json.loads(response.text)
+
+    return render_template('weather.html', city=geodata['city'])
 
 # run the app.
 if __name__ == "__main__":

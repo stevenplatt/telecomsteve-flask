@@ -1,0 +1,102 @@
+.weather-stack-1 {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+.weather-feature-1 {
+    display: grid;
+    place-items: center;
+    background: lightpink;
+    height: 30vh;
+  }
+
+.weather-feature-2 {
+    display: grid;
+    grid-gap: 1rem;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: auto auto auto;
+    background: lightseagreen;
+  }
+
+.weather-feature-3 {
+    display: grid;
+    grid-gap: 1rem;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: auto;
+    background: yellowgreen;
+  }
+
+.weather-feature-4 {
+    display: grid;
+    place-items: left;
+    height: 70%;
+    width: auto;
+    background: lightgreen;
+  }
+
+.weather-graphic {
+    display: grid;
+    place-items: center;
+    background: yellowgreen;
+  }
+
+hr {
+    border: 1px solid #f0f3f4;
+    margin: 5% 10% 5% 10%;
+  }
+
+.weather-stack-2 {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+.weather-day-1 {
+    display: grid;
+    place-items: center;
+    background: lightpink;
+    height: 20vh;
+  }
+
+.weather-day-2 {
+    display: grid;
+    grid-gap: 1rem;
+    height: 100%;
+    width: 100%;
+    place-items: center;
+    grid-template-columns: auto;
+    background: lightseagreen;
+  }
+
+.weather-day-3 {
+    display: grid;
+    grid-gap: 1rem;
+    height: 100%;
+    width: 100%;
+    place-items: center;
+    grid-template-columns: auto auto;
+    background: lightseagreen;
+  }
+
+.weather-day-4 {
+    display: grid;
+    grid-gap: 1rem;
+    height: 100%;
+    width: 100%;
+    place-items: center;
+    grid-template-columns: auto;
+    background: lightgreen;
+  }
+
+
+@media screen and (max-width: 700px) {
+    .weather-stack-2 {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
+
