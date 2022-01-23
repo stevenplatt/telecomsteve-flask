@@ -11,7 +11,7 @@ from urllib.parse import urlparse
 application = Flask(__name__)
 
 # list of domains and titles to filter from the news feed
-blocked_terms = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'trump', 'hiring']
+blocked_terms = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'trump', 'hiring', 'twitter.com']
 
 def news_singleton(num):
     hn = HackerNews()
@@ -94,4 +94,4 @@ if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
     application.debug = False
-    application.run (host="localhost", port=8000) #(host= '0.0.0.0')
+    application.run (host= '0.0.0.0') # (host="localhost", port=8000)
