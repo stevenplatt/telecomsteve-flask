@@ -2,8 +2,7 @@
 # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html
 # push updated deployment using 'eb deploy' from within the folder telecomsteve/
 
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template
 from hackernews import HackerNews
 import threading
 import math
@@ -11,10 +10,14 @@ from urllib.parse import urlparse
 
 application = Flask(__name__)
 
+# list of domains and titles to filter from the news feed
+blocked_terms = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'trump', 'hiring']
+
 def news_singleton(num):
     hn = HackerNews()
     stories = hn.top_stories()
     news_dict = {"Title":[],"URL":[],"Domain":[], "Score":[]}
+
     try:
         website = hn.item(stories[num])
 
@@ -30,6 +33,7 @@ def news_singleton(num):
         news_dict["Score"] = (str(website.score))
     except:
         pass
+    
     return(news_dict) 
 
 @application.route("/")
@@ -71,7 +75,7 @@ def news():
     # Merge all partial output dicts into a single dict and return it
     output = ({k: v for out_d in outs for k, v in out_d.items()}).values()
 
-    return render_template('news.html', news=output)
+    return render_template('news.html', news=output, blocked=blocked_terms)
 
 @application.route("/portfolio")
 def portfolio():
@@ -90,4 +94,4 @@ if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
     application.debug = False
-    application.run(host= '0.0.0.0')
+    application.run (host="localhost", port=8000) #(host= '0.0.0.0')

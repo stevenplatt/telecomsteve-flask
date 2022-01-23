@@ -90,12 +90,12 @@ body {
 }
 
 .news_accent a:visited {
-	color: #CDD0D4;
+	color: #cdd0d4;
 }
 
 .news_domain {
-	font-size: .9em;
-	margin-left: .5em;
+	font-size: 0.9em;
+	margin-left: 0.5em;
 	color: #818181;
 	font-weight: normal;
 }
@@ -253,6 +253,11 @@ td {
 	.main {
 		margin-left: 0;
 		padding: 20% 4% 20% 4%;
+	}
+
+	.about_photo {
+		width: 200px;
+		height: 200px;
 	}
 
 	.portfolio_image {
