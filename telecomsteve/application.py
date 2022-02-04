@@ -11,7 +11,7 @@ from urllib.parse import urlparse
 application = Flask(__name__)
 
 # list of domains and titles to filter from the news feed
-blocked_terms = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'trump', 'hiring', 'twitter.com', 'economist.com']
+blocked_terms = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'trump', 'hiring', 'economist.com']
 
 def news_singleton(num):
     hn = HackerNews()
