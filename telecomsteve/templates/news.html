@@ -1,0 +1,19 @@
+{% extends "sidebar.html" %}
+{% block content %}
+    <div w3-include-html="../navbar_index.html"></div>
+        <div class="main">
+        <h2>Engineering News</h2>
+            <p>A feed of today's most popular stories from Hacker News.</p>
+            <br>
+            
+            <!-- construct each Hackernews story -->
+            {% for story in news %}
+                {% if story['URL'] != [] and story['Domain'] not in blocked %}    
+                    <h3 class="news_accent"><a href="{{ story['URL'] }}" target="_blank">{{ story['Title'] }}</a> <span class="news_domain">({{ story['Domain'] }})</span> </h3>
+                    <br>
+                {% else %}
+                {% endif %}
+            {% endfor %}
+
+    </div>
+{% endblock content %}
