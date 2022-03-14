@@ -56,4 +56,3 @@ class HackerNews():
         response = self.request('GET', 'updates.json')
         return response.json()
 
-
