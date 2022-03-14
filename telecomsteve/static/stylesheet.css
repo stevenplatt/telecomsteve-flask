@@ -10,6 +10,11 @@ body {
 	padding: 10%;
 }
 
+.main-content {
+	padding: 0% 5% 0% 5%;
+	text-align: left;
+}
+
 .sidenav {
 	height: 100%;
 	width: 20%;
@@ -241,30 +246,18 @@ td {
 }
 
 @media screen and (max-width: 700px) {
-	.sidenav {
-		width: 100%;
-		height: auto;
-		position: relative;
-		box-shadow: 0px 10px 40px #f0f3f4;
-	}
-	.sidenav a {
-		text-align: center;
-		float: none;
-	}
+	
 	.navblock_text a {
 		padding: 16px;
-	}
-	.footer {
-		display: none;
-	}
-	.main {
-		margin-left: 0;
-		padding: 20% 4% 20% 4%;
 	}
 
 	.about_photo {
 		width: 200px;
 		height: 200px;
+	}
+
+	.main-content {
+		padding: 0%;
 	}
 
 	.portfolio_image {
@@ -278,6 +271,23 @@ td {
 }
 
 @media screen and (max-width: 1100px) {
+	.sidenav {
+		width: 100%;
+		height: auto;
+		position: relative;
+		box-shadow: 0px 10px 40px #f0f3f4;
+	}
+	.sidenav a {
+		text-align: center;
+		float: none;
+	}
+	.footer {
+		display: none;
+	}
+	.main {
+		margin-left: 0;
+		padding: 20% 10% 10% 10%;
+	}
 	.blog-container > div {
 		width: 100%;
 		min-height: 30vh;
