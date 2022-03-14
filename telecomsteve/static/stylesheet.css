@@ -94,6 +94,10 @@ body {
 	color: #8e44ad;
 }
 
+.blog_accent a:visited {
+	color: #cdd0d4;
+}
+
 .news_accent {
 	color: #3498db;
 }
