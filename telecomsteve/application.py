@@ -10,32 +10,6 @@ from hackernews import HackerNews
 
 application = Flask(__name__)
 
-# list of domains and titles to filter from the news feed
-blocked_terms = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'trump', 'hiring', 'economist.com', 'reuters.com']
-
-def news_singleton(num):
-    hn = HackerNews()
-    stories = hn.top_stories()
-    news_dict = {"Title":[],"URL":[],"Domain":[], "Score":[]}
-
-    try:
-        website = hn.item(stories[num])
-
-        # instructions: https://stackoverflow.com/questions/1521592/get-root-domain-of-link
-        parsed_uri = urlparse(str(website.url))
-        domain = '{uri.netloc}'.format(uri=parsed_uri)
-        domain = domain.replace('www.', '')
-
-        # add story details to dictionary
-        news_dict["Title"] = (str(website.title))
-        news_dict["URL"] = (str(website.url))
-        news_dict["Domain"] = domain
-        news_dict["Score"] = (str(website.score))
-    except:
-        pass
-    
-    return(news_dict) 
-
 @application.route("/")
 def home():
     return render_template('index.html')
@@ -62,8 +36,33 @@ def blog():
 
 @application.route("/news", methods=["GET"])
 def news():
+    # list of domains and titles to filter from the news feed
+    blocked_terms = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'trump', 'hiring', 'economist.com', 'reuters.com']
     count = range(50) # number of stories to display
     nthreads = 50 # number 
+
+    def news_singleton(num):
+        hn = HackerNews()
+        stories = hn.top_stories()
+        news_dict = {"Title":[],"URL":[],"Domain":[], "Score":[]}
+
+        try:
+            website = hn.item(stories[num])
+
+            # instructions: https://stackoverflow.com/questions/1521592/get-root-domain-of-link
+            parsed_uri = urlparse(str(website.url))
+            domain = '{uri.netloc}'.format(uri=parsed_uri)
+            domain = domain.replace('www.', '')
+
+            # add story details to dictionary
+            news_dict["Title"] = (str(website.title))
+            news_dict["URL"] = (str(website.url))
+            news_dict["Domain"] = domain
+            news_dict["Score"] = (str(website.score))
+        except:
+            pass
+        
+        return(news_dict)
 
     def worker(count, outdict):
         """ The worker function, invoked in a thread. 'nums' is a
@@ -102,4 +101,4 @@ if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
     application.debug = False
-    application.run (host="localhost", port=8000) # (host= '0.0.0.0') 
+    application.run (host= '0.0.0.0') # (host="localhost", port=8000)
