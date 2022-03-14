@@ -2,11 +2,11 @@
 # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html
 # push updated deployment using 'eb deploy' from within the folder telecomsteve/
 
+import threading, math, requests
 from flask import Flask, render_template
-from hackernews import HackerNews
-import threading
-import math
 from urllib.parse import urlparse
+from hackernews import HackerNews
+
 
 application = Flask(__name__)
 
@@ -39,6 +39,26 @@ def news_singleton(num):
 @application.route("/")
 def home():
     return render_template('index.html')
+
+@application.route("/portfolio")
+def portfolio():
+    return render_template('portfolio.html')
+
+@application.route("/research")
+def research():
+    return render_template('research.html')
+
+@application.route("/resume")
+def resume():
+    return render_template('resume.html')
+
+@application.route("/blog", methods=["GET"])
+def blog():
+
+    url = f"https://api.github.com/users/stevenplatt/gists" # url to request
+    blog_data = requests.get(url).json() # make the request and return the json
+
+    return render_template('blog.html', blog=blog_data)
 
 @application.route("/news", methods=["GET"])
 def news():
@@ -77,21 +97,9 @@ def news():
 
     return render_template('news.html', news=output, blocked=blocked_terms)
 
-@application.route("/portfolio")
-def portfolio():
-    return render_template('portfolio.html')
-
-@application.route("/research")
-def research():
-    return render_template('research.html')
-
-@application.route("/resume")
-def resume():
-    return render_template('resume.html')
-
 # run the app.
 if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
     application.debug = False
-    application.run (host= '0.0.0.0') # (host="localhost", port=8000)
+    application.run (host="localhost", port=8000) # (host= '0.0.0.0') 

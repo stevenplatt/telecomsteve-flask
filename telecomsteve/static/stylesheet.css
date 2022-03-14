@@ -81,6 +81,14 @@ body {
 	color: #3498db;
 }
 
+.blog_accent {
+	color: #8e44ad;
+}
+
+.blog_accent a {
+	color: #8e44ad;
+}
+
 .news_accent {
 	color: #3498db;
 }
@@ -129,7 +137,6 @@ td {
 
 .about_photo {
 	display: block;
-	margin-top: 5%;
 	width: 300px;
 	height: 300px;
 	object-fit: cover;
