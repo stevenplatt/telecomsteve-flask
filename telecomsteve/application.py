@@ -3,7 +3,8 @@
 # push updated deployment using 'eb deploy' from within the folder telecomsteve/
 
 import threading, math, requests
-from flask import Flask, render_template
+from unittest import result
+from flask import Flask, render_template, request, url_for
 from urllib.parse import urlparse
 from hackernews import HackerNews
 
@@ -18,9 +19,13 @@ def home():
 def portfolio():
     return render_template('portfolio.html')
 
-@application.route("/research")
+@application.route("/research", methods=["POST", "GET"])
 def research():
-    return render_template('research.html')
+    if request.method == 'POST': # source: https://pythonbasics.org/flask-http-methods/
+        query = request.form['search-query']
+        return render_template('research_results.html', results=query)
+    else:
+        return render_template('research_main.html')
 
 @application.route("/resume")
 def resume():
@@ -82,8 +87,7 @@ def news():
         # and output dict.
         t = threading.Thread(
                 target=worker,
-                args=(count[chunksize * i:chunksize * (i + 1)],
-                      outs[i]))
+                args=(count[chunksize * i:chunksize * (i + 1)], outs[i]))
         threads.append(t)
         t.start()
 
@@ -101,4 +105,4 @@ if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
     application.debug = False
-    application.run (host= '0.0.0.0') # (host="localhost", port=8000) #
+    application.run (host= '0.0.0.0') # (host="localhost", port=8000) # 

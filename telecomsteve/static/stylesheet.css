@@ -249,8 +249,39 @@ td {
 	margin-block-end: 0em;
 }
 
+.search-container {
+	width: 400px;
+	position: relative;
+	float: right;
+}
+
+input[type="text" i] {
+	border-radius: 25px;
+	width: inherit;
+	height: 45px;
+	padding: 0 5%;
+	font-size: 1em;
+	border: 1px solid #d0cfce;
+}
+
+input[type="text" i]:focus {
+	outline: none;
+	border-color: #9ecaed;
+	box-shadow: 0 0 10px #9ecaed;
+}
+
+.search-icon {
+	position: relative;
+	float: right;
+	filter: invert(52%) sepia(69%) saturate(534%) hue-rotate(162deg)
+		brightness(90%) contrast(89%);
+	width: 25px;
+	height: 75px;
+	top: -62px;
+	right: -15px;
+}
+
 @media screen and (max-width: 700px) {
-	
 	.navblock_text a {
 		padding: 16px;
 	}
@@ -303,5 +334,8 @@ td {
 
 	table {
 		font-size: 12px;
+	}
+	.search-container {
+		width: 250px;
 	}
 }
