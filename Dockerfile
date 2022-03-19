@@ -3,17 +3,14 @@
 
 FROM ubuntu:20.04
 
+# install dependencies
 RUN apt-get update -y && apt-get install -y python3-pip python3-dev git
 RUN pip3 install git+https://github.com/stevenplatt/arxivpy
 
-
-# We copy just the requirements.txt first to leverage Docker cache
-COPY ./telecomsteve/requirements.txt /app/requirements.txt
+COPY ./telecomsteve /app
 
 WORKDIR /app
 RUN pip3 install -r requirements.txt
-
-COPY ./telecomsteve /app
 
 ENTRYPOINT [ "python3" ]
 
