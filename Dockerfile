@@ -3,8 +3,9 @@
 
 FROM ubuntu:20.04
 
-RUN apt-get update -y
-RUN apt-get install -y python3-pip python3-dev && pip3 install -r requirements.txt
+RUN apt-get update -y \
+    && apt-get install -y python3-pip python3-dev \
+    && pip3 install -r requirements.txt
 # RUN pip3 install git+https://github.com/stevenplatt/arxivpy
 
 # We copy just the requirements.txt first to leverage Docker cache
