@@ -338,5 +338,6 @@ input[type="text" i]:focus {
 	.search-container {
 		width: 250px;
 		margin: auto;
+		float: none;
 	}
 }
