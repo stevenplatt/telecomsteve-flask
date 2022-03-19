@@ -257,7 +257,7 @@ td {
 
 input[type="text" i] {
 	border-radius: 25px;
-	width: inherit;
+	width: 90%;
 	height: 45px;
 	padding: 0 5%;
 	font-size: 1em;
@@ -278,7 +278,7 @@ input[type="text" i]:focus {
 	width: 25px;
 	height: 75px;
 	top: -62px;
-	right: -15px;
+	right: 5%;
 }
 
 @media screen and (max-width: 700px) {
@@ -337,5 +337,6 @@ input[type="text" i]:focus {
 	}
 	.search-container {
 		width: 250px;
+		margin: auto;
 	}
 }
