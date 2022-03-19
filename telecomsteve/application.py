@@ -3,6 +3,7 @@
 # push updated deployment using 'eb deploy' from within the folder telecomsteve/
 
 import threading, math, requests
+import arxivpy
 from unittest import result
 from flask import Flask, render_template, request, url_for
 from urllib.parse import urlparse
@@ -21,9 +22,20 @@ def portfolio():
 
 @application.route("/research", methods=["POST", "GET"])
 def research():
+
     if request.method == 'POST': # source: https://pythonbasics.org/flask-http-methods/
-        query = request.form['search-query']
-        return render_template('research_results.html', results=query)
+        query = request.form['search-query'] # get form input
+        clean_query = query.replace(" ", "+") # replace spaces within input
+        papers = arxivpy.query(search_query=f'all:{clean_query}&start=0&max_results=20', sort_by='relevance') # return results
+        
+        for item in papers: # show only the date and not the time with results
+            date = item.get('publish_date').date()
+            item.update({'publish_date': date})
+            abstract = item.get('abstract')[:500] # get only the first 500 charecters of the abstract
+            item.update({'abstract': abstract})
+
+        return render_template('research_results.html', results=papers, query=query)
+
     else:
         return render_template('research_main.html')
 
@@ -42,7 +54,8 @@ def blog():
 @application.route("/news", methods=["GET"])
 def news():
     # list of domains and titles to filter from the news feed
-    blocked_terms = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'trump', 'hiring', 'economist.com', 'reuters.com']
+    blocked_terms = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 
+                    'ft.com', 'trump', 'hiring', 'economist.com', 'reuters.com']
     count = range(50) # number of stories to display
     nthreads = 50 # number 
 
@@ -105,4 +118,4 @@ if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
     application.debug = False
-    application.run (host= '0.0.0.0') # (host="localhost", port=8000) # 
+    application.run  (host= '0.0.0.0') #  # (host="localhost", port=8000)
