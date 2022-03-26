@@ -72,8 +72,8 @@ def news():
             domain = '{uri.netloc}'.format(uri=parsed_uri)
             domain = domain.replace('www.', '')
             
-            if len(domain) > 20: 
-                domain = domain[:20] + '...' # get the first 20 charecters of the URL and append '...'
+            if len(domain) > 25: 
+                domain = domain[:25] + '...' # get the first 20 charecters of the URL and append '...'
             else:
                 pass
 
