@@ -46,11 +46,10 @@ def login():
 
     username = os.environ['USERNAME']
     password = os.environ['PASSWORD']
+    welcome_message = 'Type your credentials and press Enter to login.'
+    error_message = 'The credentials entered are incorrect.'
 
     if request.method == 'POST': # source: https://pythonbasics.org/flask-http-methods/
-
-        welcome_message = 'Type your credentials and press Enter to login.'
-        error_message = 'The credentials entered are incorrect.'
 
         if username == request.form['name'] and password == request.form['key']:
             return render_template('index.html')
