@@ -73,7 +73,7 @@ def news():
             domain = domain.replace('www.', '')
             
             if len(domain) > 25: 
-                domain = domain[:25] + '...' # get the first 20 charecters of the URL and append '...'
+                domain = domain[:25] + '...' # get the first 25 charecters of the URL and append '...'
             else:
                 pass
 
