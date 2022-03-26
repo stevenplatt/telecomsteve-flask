@@ -39,6 +39,22 @@ def research():
     else:
         return render_template('research_main.html')
 
+@application.route("/login", methods=["POST", "GET"])
+def login():
+
+    if request.method == 'POST': # source: https://pythonbasics.org/flask-http-methods/
+        password = request.form['creds'] # get form input
+
+
+        clean_query = query.replace(" ", "+") # replace spaces within input
+        papers = arxivpy.query(search_query=f'all:{clean_query}&start=0&max_results=20', sort_by='relevance') # return results
+        
+
+        return render_template('index.html')
+
+    else:
+        return render_template('login.html')
+
 @application.route("/resume")
 def resume():
     return render_template('resume.html')
@@ -123,4 +139,4 @@ if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
     application.debug = False
-    application.run  (host= '0.0.0.0') #  # (host="localhost", port=8000)
+    application.run  (host="localhost", port=8000) # (host= '0.0.0.0') #  # 

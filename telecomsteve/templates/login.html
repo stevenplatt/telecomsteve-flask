@@ -1,0 +1,18 @@
+{% extends "sidebar.html" %}
+{% block content %}
+    <div class="main">
+        <div class="login-form">
+            <h2>Login</h2>
+            <p>Type your credentials and press 'Enter' to login.</p>
+
+            <br><br>
+
+            <form action="{{ url_for('login') }}" method="post">
+                <div class="login"><input type="text" name="creds" placeholder="username"></div>
+                <div class="login"><input type="password" name="creds" placeholder="password"></div>
+                <!-- source: https://stackoverflow.com/questions/27807853/html5-how-to-make-a-form-submit-after-pressing-enter-at-any-of-the-text-inputs -->
+                <input type="submit" style="display: none" /> 
+            </form>
+        </div>
+    </div>
+{% endblock content %}
