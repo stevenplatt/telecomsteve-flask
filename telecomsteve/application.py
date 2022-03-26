@@ -69,8 +69,13 @@ def news():
 
             # instructions: https://stackoverflow.com/questions/1521592/get-root-domain-of-link
             parsed_uri = urlparse(str(website.url))
-            domain = '{uri.netloc}'.format(uri=parsed_uri)[:23] # get the first 23 charecters of the URL - the first 3 ("www") are later removed
+            domain = '{uri.netloc}'.format(uri=parsed_uri)
             domain = domain.replace('www.', '')
+            
+            if len(domain) > 20: 
+                domain = domain[:20] + '...' # get the first 20 charecters of the URL and append '...'
+            else:
+                pass
 
             # add story details to dictionary
             news_dict["Title"] = (str(website.title))
