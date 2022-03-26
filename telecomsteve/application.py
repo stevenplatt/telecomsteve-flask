@@ -2,6 +2,8 @@
 # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html
 # push updated deployment using 'eb deploy' from within the folder telecomsteve/
 
+from email import message
+import os
 import threading, math, requests
 import arxivpy
 from unittest import result
@@ -42,18 +44,21 @@ def research():
 @application.route("/login", methods=["POST", "GET"])
 def login():
 
+    username = os.environ['USERNAME']
+    password = os.environ['PASSWORD']
+
     if request.method == 'POST': # source: https://pythonbasics.org/flask-http-methods/
-        password = request.form['creds'] # get form input
-
-
-        clean_query = query.replace(" ", "+") # replace spaces within input
-        papers = arxivpy.query(search_query=f'all:{clean_query}&start=0&max_results=20', sort_by='relevance') # return results
         
+        welcome_message = 'Type your credentials and press Enter to login.'
+        error_message = 'The credentials entered are incorrect.'
 
-        return render_template('index.html')
+        if username == request.form['name'] and password == request.form['key']:
+            return render_template('index.html')
+        else:
+            return render_template('login.html', message=error_message, text_color="red")
 
     else:
-        return render_template('login.html')
+        return render_template('login.html', message=welcome_message, text_color="black")
 
 @application.route("/resume")
 def resume():
