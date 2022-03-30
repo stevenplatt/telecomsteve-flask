@@ -1,7 +1,7 @@
 # build file to configure container for Dockerhub
 # Docker cheatsheet https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes
 
-FROM python:3-alpine
+FROM ubuntu:20.04
 
 # install dependencies
 RUN apt-get update -y && apt-get install -y python3-pip python3-dev git
