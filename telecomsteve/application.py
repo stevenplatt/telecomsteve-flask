@@ -2,11 +2,9 @@
 # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html
 # push updated deployment using 'eb deploy' from within the folder telecomsteve/
 
-from email import message
 import os
-import threading, math, requests
+import threading, math, requests, feedparser
 import arxivpy
-from unittest import result
 from flask import Flask, render_template, request, url_for
 from urllib.parse import urlparse
 from hackernews import HackerNews
@@ -18,21 +16,26 @@ application = Flask(__name__)
 def home():
     return render_template('index.html')
 
-# @application.route("/portfolio")
-# def portfolio():
-#     return render_template('portfolio.html')
+@application.route("/portfolio")
+def portfolio():
+    return render_template('portfolio.html')
 
-@application.route("blockchain") # this route is incomplete
-def blockchain():
+@application.route("/blockchain", methods=["GET"]) # this route is incomplete
+def blockchain(): # source https://waylonwalker.com/parsing-rss-python/
 
-    blockchain_news = [ # a list of sources used to pull in blockchain news
-        'https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml',
-        'https://cointelegraph.com/rss',
-        'https://www.cryptoknowmics.com/rss-feeds/news',
-        'https://www.cryptoknowmics.com/rss-feeds/top-picks'
-    ]
+    # sources = [ # a list of sources used to pull in blockchain news
+    #     'https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml',
+    #     'https://cointelegraph.com/rss',
+    #     'https://www.cryptoknowmics.com/rss-feeds/news',
+    #     'https://www.cryptoknowmics.com/rss-feeds/top-picks'
+    # ]
 
-    return render_template('blockchain.html')
+    feed = feedparser.parse('https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml')['entries'][:25]
+    for item in feed:
+        date = item.get('published')[:-15] # remove the timestamp from the date
+        item.update({'published':date})
+
+    return render_template('blockchain_news.html', news=feed)
 
 @application.route("/research", methods=["POST", "GET"])
 def research():
@@ -155,4 +158,4 @@ if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
     application.debug = False
-    application.run  (host= '0.0.0.0', port=8080) # (host="localhost", port=8000) # # #  #  # 
+    application.run (host= '0.0.0.0', port=8080) # (host="localhost", port=8000) #  # #  #  # 

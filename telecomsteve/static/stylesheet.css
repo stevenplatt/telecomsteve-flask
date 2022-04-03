@@ -98,6 +98,18 @@ body {
 	color: #cdd0d4;
 }
 
+.blockchain_accent {
+	color: #8e44ad;
+}
+
+.blockchain_accent a {
+	color: #8e44ad;
+}
+
+.blockchain_accent a:visited {
+	color: #cdd0d4;
+}
+
 .news_accent {
 	color: #3498db;
 }
