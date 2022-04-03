@@ -18,9 +18,21 @@ application = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@application.route("/portfolio")
-def portfolio():
-    return render_template('portfolio.html')
+# @application.route("/portfolio")
+# def portfolio():
+#     return render_template('portfolio.html')
+
+@application.route("blockchain") # this route is incomplete
+def blockchain():
+
+    blockchain_news = [ # a list of sources used to pull in blockchain news
+        'https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml',
+        'https://cointelegraph.com/rss',
+        'https://www.cryptoknowmics.com/rss-feeds/news',
+        'https://www.cryptoknowmics.com/rss-feeds/top-picks'
+    ]
+
+    return render_template('blockchain.html')
 
 @application.route("/research", methods=["POST", "GET"])
 def research():
