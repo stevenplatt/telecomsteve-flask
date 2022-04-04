@@ -19,12 +19,17 @@ def home():
 @application.route("/blockchain", methods=["GET"]) # this route is incomplete
 def blockchain(): # source https://waylonwalker.com/parsing-rss-python/
 
-    # sources = [ # a list of sources used to pull in blockchain news
-    #     'https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml',
-    #     'https://cointelegraph.com/rss',
-    #     'https://www.cryptoknowmics.com/rss-feeds/news',
-    #     'https://www.cryptoknowmics.com/rss-feeds/top-picks'
-    # ]
+    sources = [ # a list of sources used to pull in blockchain news
+        'https://www.aljazeera.com/xml/rss/all.xml',
+        'https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml',
+        'https://cointelegraph.com/rss',
+        'https://www.theverge.com/rss/index.xml',
+        'https://www.vox.com/rss/world/index.xml',
+        'https://www.rand.org/topics/international-affairs.xml',
+        'https://www.cnbc.com/id/100727362/device/rss/rss.html',
+        'https://www.engadget.com/rss.xml',
+        'https://hnrss.org/best' # source: https://hnrss.github.io/
+    ]
 
     feed = feedparser.parse('https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml')['entries'][:25]
     for item in feed:
