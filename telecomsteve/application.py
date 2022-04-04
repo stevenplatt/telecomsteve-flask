@@ -16,10 +16,6 @@ application = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@application.route("/portfolio")
-def portfolio():
-    return render_template('portfolio.html')
-
 @application.route("/blockchain", methods=["GET"]) # this route is incomplete
 def blockchain(): # source https://waylonwalker.com/parsing-rss-python/
 
@@ -73,18 +69,6 @@ def login():
 
     else:
         return render_template('login.html', message=welcome_message)
-
-@application.route("/resume")
-def resume():
-    return render_template('resume.html')
-
-@application.route("/blog", methods=["GET"])
-def blog():
-
-    url = f"https://api.github.com/users/stevenplatt/gists" # url to request
-    blog_data = requests.get(url).json() # make the request and return the json
-
-    return render_template('blog.html', blog=blog_data)
 
 @application.route("/news", methods=["GET"])
 def news():
