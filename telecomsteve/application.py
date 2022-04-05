@@ -14,8 +14,8 @@ application = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@application.route("/blockchain", methods=["GET"]) # this route is incomplete
-def blockchain(): # source https://waylonwalker.com/parsing-rss-python/
+@application.route("/news", methods=["GET"]) # this route is incomplete
+def news(): # source https://waylonwalker.com/parsing-rss-python/
 
     # these urls are filtered because they are often behind a paywall
     filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'economist.com', 'reuters.com']
