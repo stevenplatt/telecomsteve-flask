@@ -2,8 +2,8 @@
 # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html
 # push updated deployment using 'eb deploy' from within the folder telecomsteve/
 
-import os, feedparser, random
-import arxivpy
+import os, feedparser, arxivpy
+import dateutil.parser
 from flask import Flask, render_template, request, url_for
 from urllib.parse import urlparse
 
@@ -28,16 +28,16 @@ def news(): # source https://waylonwalker.com/parsing-rss-python/
 
     feeds = [feedparser.parse(url)['entries'] for url in urls]
     feed = [item for feed in feeds for item in feed]
+    feed.sort(key=lambda x: dateutil.parser.parse(x['published']), reverse=True)
+    
     for item in feed:
         date = item.get('published')[:-15] # remove the timestamp from the date
         item.update({'published':date})
 
-        #website = item.get('link')
         parsed_uri = urlparse(item.get('link')) # instructions: https://stackoverflow.com/questions/1521592/get-root-domain-of-link
         domain = '{uri.netloc}'.format(uri=parsed_uri)
         domain = domain.replace('www.', '')
         item.update({'domain': domain})
-    random.shuffle(feed)
 
     return render_template('blockchain_news.html', news=feed[:50], blocked=filtered_urls)
 
