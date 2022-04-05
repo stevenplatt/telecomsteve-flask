@@ -29,7 +29,7 @@ def news(): # source https://waylonwalker.com/parsing-rss-python/
     feeds = [feedparser.parse(url)['entries'] for url in urls]
     feed = [item for feed in feeds for item in feed]
     feed.sort(key=lambda x: dateutil.parser.parse(x['published']), reverse=True)
-    
+
     for item in feed:
         date = item.get('published')[:-15] # remove the timestamp from the date
         item.update({'published':date})
@@ -39,7 +39,7 @@ def news(): # source https://waylonwalker.com/parsing-rss-python/
         domain = domain.replace('www.', '')
         item.update({'domain': domain})
 
-    return render_template('blockchain_news.html', news=feed[:50], blocked=filtered_urls)
+    return render_template('news.html', news=feed[:50], blocked=filtered_urls)
 
 @application.route("/research", methods=["POST", "GET"])
 def research():
