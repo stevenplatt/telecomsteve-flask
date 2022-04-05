@@ -2,15 +2,15 @@
 {% block content %}
     <div w3-include-html="../navbar_index.html"></div>
         <div class="main">
-        <h2>Coindesk News</h2>
-            <p>A feed of the 25 most recent blockchain and cryptocurrency stories from CoinDesk.com</p>
+        <h2>Engineering and World News</h2>
+            <p>A random selection of 50 recent stories from sources covering engineering and world news.</p>
             <br>
             
             <!-- construct each Hackernews story -->
             <div class="main-content">
             {% for story in news %}
-                {% if story['href'] != [] %}    
-                    <h3 class="blockchain_accent"><a href="{{ story['link'] }}" target="_blank">{{ story['title'] }}</a> <span class="news_domain">({{ story['published'] }})</span> </h3>
+                {% if story['href'] != [] and story['domain'] not in blocked %}    
+                    <h3 class="news_accent"><a href="{{ story['link'] }}" target="_blank">{{ story['title'] }}</a> <span class="news_domain">({{ story['domain'] }})</span> </h3>
                     <br>
                 {% else %}
                 {% endif %}

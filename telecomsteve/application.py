@@ -2,8 +2,7 @@
 # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html
 # push updated deployment using 'eb deploy' from within the folder telecomsteve/
 
-import os
-import threading, math, requests, feedparser
+import os, threading, math, requests, feedparser, random
 import arxivpy
 from flask import Flask, render_template, request, url_for
 from urllib.parse import urlparse
@@ -19,24 +18,29 @@ def home():
 @application.route("/blockchain", methods=["GET"]) # this route is incomplete
 def blockchain(): # source https://waylonwalker.com/parsing-rss-python/
 
-    sources = [ # a list of sources used to pull in blockchain news
+    # these urls are filtered because they are often behind a paywall
+    filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'economist.com', 'reuters.com']
+
+    urls = [ # a list of sources used to pull in blockchain news
         'https://www.aljazeera.com/xml/rss/all.xml',
         'https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml',
-        'https://cointelegraph.com/rss',
         'https://www.theverge.com/rss/index.xml',
-        'https://www.vox.com/rss/world/index.xml',
-        'https://www.rand.org/topics/international-affairs.xml',
-        'https://www.cnbc.com/id/100727362/device/rss/rss.html',
-        'https://www.engadget.com/rss.xml',
-        'https://hnrss.org/best' # source: https://hnrss.github.io/
-    ]
+        'https://hnrss.org/best'] # source: https://hnrss.github.io/ (a hacker news rss feed)
 
-    feed = feedparser.parse('https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml')['entries'][:25]
+    feeds = [feedparser.parse(url)['entries'] for url in urls]
+    feed = [item for feed in feeds for item in feed]
     for item in feed:
         date = item.get('published')[:-15] # remove the timestamp from the date
         item.update({'published':date})
 
-    return render_template('blockchain_news.html', news=feed)
+        #website = item.get('link')
+        parsed_uri = urlparse(item.get('link')) # instructions: https://stackoverflow.com/questions/1521592/get-root-domain-of-link
+        domain = '{uri.netloc}'.format(uri=parsed_uri)
+        domain = domain.replace('www.', '')
+        item.update({'domain': domain})
+    random.shuffle(feed)
+
+    return render_template('blockchain_news.html', news=feed[:50], blocked=filtered_urls)
 
 @application.route("/research", methods=["POST", "GET"])
 def research():
@@ -147,4 +151,4 @@ if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
     application.debug = False
-    application.run (host= '0.0.0.0', port=8080) # (host="localhost", port=8000) #  # #  #  # 
+    application.run (host="localhost", port=8000) #(host= '0.0.0.0', port=8080) #  #  # #  #  # 
