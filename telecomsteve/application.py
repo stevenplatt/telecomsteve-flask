@@ -47,7 +47,7 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
 def home():
     return render_template('index.html')
 
-@application.route("/technology", methods=["GET"]) 
+@application.route("/news", methods=["GET"]) 
 def technology(): 
     content = newsfeed('technology')
     return render_template('news.html', news=content, blocked=filtered_urls, category='technology')
@@ -104,4 +104,4 @@ if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
     application.debug = False
-    application.run (host= '0.0.0.0', port=8080) # (host="localhost", port=8000)  #  # 
+    application.run (host="localhost", port=8000) #(host= '0.0.0.0', port=8080) # (host="localhost", port=8000)  #  # 
