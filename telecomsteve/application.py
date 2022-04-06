@@ -7,24 +7,26 @@ import dateutil.parser
 from flask import Flask, render_template, request, url_for
 from urllib.parse import urlparse
 
-
 application = Flask(__name__)
 
-@application.route("/")
-def home():
-    return render_template('index.html')
+# these urls are filtered because they are often behind a paywall
+filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'economist.com', 'reuters.com']
 
-@application.route("/news", methods=["GET"]) # this route is incomplete
-def news(): # source https://waylonwalker.com/parsing-rss-python/
+def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
 
-    # these urls are filtered because they are often behind a paywall
-    filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'economist.com', 'reuters.com']
+    if topic == 'engineering':
+        # a list of sources used to pull in engineering news
+        urls = ['https://hnrss.org/best'] # source: https://hnrss.github.io/ (a hacker news rss feed)
+    
+    elif topic == 'world':
+        # a list of sources used to pull in world news
+        urls = ['https://www.aljazeera.com/xml/rss/all.xml',
+            'https://www.cnbc.com/id/100727362/device/rss/rss.html']
 
-    urls = [ # a list of sources used to pull in blockchain news
-        'https://www.aljazeera.com/xml/rss/all.xml',
-        'https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml',
-        'https://www.theverge.com/rss/index.xml',
-        'https://hnrss.org/best'] # source: https://hnrss.github.io/ (a hacker news rss feed)
+    else:
+        # a list of sources used to pull in technology news
+        urls = ['https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml',
+            'https://www.theverge.com/rss/index.xml'] 
 
     feeds = [feedparser.parse(url)['entries'] for url in urls]
     feed = [item for feed in feeds for item in feed]
@@ -39,7 +41,26 @@ def news(): # source https://waylonwalker.com/parsing-rss-python/
         domain = domain.replace('www.', '')
         item.update({'domain': domain})
 
-    return render_template('news.html', news=feed[:50], blocked=filtered_urls)
+    return feed[:50]
+
+@application.route("/")
+def home():
+    return render_template('index.html')
+
+@application.route("/technology", methods=["GET"]) 
+def technology(): 
+    content = newsfeed('technology')
+    return render_template('news.html', news=content, blocked=filtered_urls, category='technology')
+
+@application.route("/engineering", methods=["GET"])
+def engineering(): 
+    content = newsfeed('engineering')
+    return render_template('news.html', news=content, blocked=filtered_urls, category='engineering')
+
+@application.route("/world", methods=["GET"]) 
+def world(): 
+    content = newsfeed('world')
+    return render_template('news.html', news=content, blocked=filtered_urls, category='world')
 
 @application.route("/research", methods=["POST", "GET"])
 def research():
@@ -83,4 +104,4 @@ if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
     application.debug = False
-    application.run (host= '0.0.0.0', port=8080) # (host="localhost", port=8000) 
+    application.run (host="localhost", port=8000)  # (host= '0.0.0.0', port=8080) # 

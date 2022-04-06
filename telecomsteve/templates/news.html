@@ -2,8 +2,28 @@
 {% block content %}
     <div w3-include-html="../navbar_index.html"></div>
         <div class="main">
-        <h2>Engineering and World News</h2>
-            <p>A selection of 50 recent stories from sources covering engineering and world news.</p>
+        
+        {% if category == 'technology' %}
+            <h2>
+                <span style="color:#f1c40f; font-size:150%">Technology</span>
+                &nbsp; <a style="color:#cdd0d4; font-size:75%" href="{{ url_for('engineering') }}">Engineering</a> 
+                &nbsp; <a style="color:#cdd0d4; font-size:75%" href="{{ url_for('world') }}">World</a>
+            </h2>
+        {% elif category == 'engineering' %}
+            <h2>
+                <a style="color:#cdd0d4; font-size:75%" href="{{ url_for('technology') }}">Technology</a> &nbsp;
+                <span style="color:#f1c40f; font-size:150%">Engineering</span>
+                &nbsp; <a style="color:#cdd0d4; font-size:75%" href="{{ url_for('world') }}">World</a>
+            </h2>
+        {% else %}
+            <h2>
+                <a style="color:#cdd0d4; font-size:75%" href="{{ url_for('technology') }}">Technology</a> &nbsp;
+                <a style="color:#cdd0d4; font-size:75%" href="{{ url_for('engineering') }}">Engineering</a> &nbsp;
+                <span style="color:#f1c40f; font-size:150%">World</span>
+            </h2>
+        {% endif %}
+
+            <p>Select a topic above to change news sources.</p>
             <br>
             
             <!-- construct each Hackernews story -->
