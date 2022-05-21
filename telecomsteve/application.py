@@ -16,7 +16,7 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
 
     if topic == 'engineering':
         # a list of sources used to pull in engineering news
-        urls = ['https://hnrss.org/best'] # source: https://hnrss.github.io/ (a hacker news rss feed)
+        urls = ['https://hnrss.org/frontpage'] # source: https://hnrss.github.io/ (a hacker news rss feed)
     
     elif topic == 'world':
         # a list of sources used to pull in world news
