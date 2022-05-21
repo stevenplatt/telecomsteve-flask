@@ -26,7 +26,8 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
     else:
         # a list of sources used to pull in technology news
         urls = ['https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml',
-            'https://www.theverge.com/rss/index.xml'] 
+            'https://www.theverge.com/rss/index.xml',
+            'https://www.fiercewireless.com/rss/xml'] 
 
     feeds = [feedparser.parse(url)['entries'] for url in urls]
     feed = [item for feed in feeds for item in feed]
