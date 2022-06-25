@@ -43,10 +43,10 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
         domain = '{uri.netloc}'.format(uri=parsed_uri)
         domain = domain.replace('www.', '')
         item.update({'domain': domain})
-
+    
         for term in filtered_terms:
             if term.lower() in str(item.get('title')).lower():
-                feed = feed.remove(item)
+                feed.pop(item)
     
     return feed[:30]
 
