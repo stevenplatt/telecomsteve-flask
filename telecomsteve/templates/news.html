@@ -29,7 +29,7 @@
             <!-- construct each Hackernews story -->
             <div class="main-content">
             {% for story in news %}
-                {% if story['href'] != [] and story['domain'] not in blocked %}    
+                {% if story['href'] != [] and (story['domain'] not in blocked_url or any(blocked_term) not in story['title']) %}    
                     <h3 class="news_accent"><a href="{{ story['link'] }}" target="_blank">{{ story['title'] }}</a> <span class="news_domain">({{ story['domain'] }})</span> </h3>
                     <br>
                 {% else %}

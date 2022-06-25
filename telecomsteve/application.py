@@ -11,6 +11,7 @@ application = Flask(__name__)
 
 # these urls are filtered because they are often behind a paywall
 filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'economist.com', 'reuters.com']
+filtered_terms = ['trump', 'roe', 'abortion', 'shooting', 'gun', 'israel']
 
 def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
 
@@ -26,8 +27,7 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
     else:
         # a list of sources used to pull in technology news
         urls = ['https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml',
-            'https://www.theverge.com/rss/index.xml',
-            'https://www.fiercewireless.com/rss/xml'] 
+            'https://www.theverge.com/rss/index.xml'] # 'https://www.fiercewireless.com/rss/xml' 
 
     feeds = [feedparser.parse(url)['entries'] for url in urls]
     feed = [item for feed in feeds for item in feed]
@@ -42,7 +42,7 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
         domain = domain.replace('www.', '')
         item.update({'domain': domain})
 
-    return feed[:50]
+    return feed[:30]
 
 @application.route("/")
 def home():
@@ -51,17 +51,17 @@ def home():
 @application.route("/news", methods=["GET"]) 
 def technology(): 
     content = newsfeed('technology')
-    return render_template('news.html', news=content, blocked=filtered_urls, category='technology')
+    return render_template('news.html', news=content, blocked_url=filtered_urls, blocked_term=filtered_terms, category='technology')
 
 @application.route("/engineering", methods=["GET"])
 def engineering(): 
     content = newsfeed('engineering')
-    return render_template('news.html', news=content, blocked=filtered_urls, category='engineering')
+    return render_template('news.html', news=content, blocked_url=filtered_urls, blocked_term=filtered_terms, category='engineering')
 
 @application.route("/world", methods=["GET"]) 
 def world(): 
     content = newsfeed('world')
-    return render_template('news.html', news=content, blocked=filtered_urls, category='world')
+    return render_template('news.html', news=content, blocked_url=filtered_urls, blocked_term=filtered_terms, category='world')
 
 @application.route("/research", methods=["POST", "GET"])
 def research():
