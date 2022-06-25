@@ -63,7 +63,7 @@ def world():
     content = newsfeed('world')
     return render_template('news.html', news=content, blocked_url=filtered_urls, blocked_term=filtered_terms, category='world')
 
-@application.route("/research", methods=["POST", "GET"])
+@application.route("/research", methods=["GET"])
 def research():
     return render_template('research.html')
 
