@@ -46,7 +46,7 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
 
         for term in filtered_terms:
             if term.lower() in str(item.get('title')).lower():
-                item.update({'domain':''})
+                item.update({'href':''})
     
     return feed[:30]
 
