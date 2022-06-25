@@ -35,9 +35,6 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
     feed = [item for feed in feeds for item in feed]
     feed.sort(key=lambda x: dateutil.parser.parse(x['published']), reverse=True)
 
-    def remove_filtered_terms(item):
-        feed.remove(item)
-
     for item in feed:
         date = item.get('published')[:-15] # remove the timestamp from the date
         item.update({'published':date})
@@ -50,9 +47,13 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
         title = item.get('title')
         for term in filtered_terms:
             if term in title:
-                remove_filtered_terms(item)
+                feed = remove_filtered_terms(item, feed)
     
     return feed[:30]
+
+def remove_filtered_terms(item, feed):
+    feed.remove(item)
+    return feed
 
 @application.route("/")
 def home():
