@@ -29,7 +29,7 @@
             <!-- construct each news story -->
             <div class="main-content">
             {% for story in news %}
-                {% if story['href'] != [] and any(blocked) not in story) %}    
+                {% if story['href'] != [] and any(blocked) not in story %}    
                     <h3 class="news_accent"><a href="{{ story['link'] }}" target="_blank">{{ story['title'] }}</a> <span class="news_domain">({{ story['domain'] }})</span> </h3>
                     <br>
                 {% else %}
