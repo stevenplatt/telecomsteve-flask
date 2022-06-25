@@ -35,21 +35,20 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
     feed = [item for feed in feeds for item in feed]
     feed.sort(key=lambda x: dateutil.parser.parse(x['published']), reverse=True)
 
-    for term in filtered:
-        for item in feed:
-            item_list = list(item.values())
-            lowercase_list = [item.lower() for item in item_list]
 
-            if term.lower() in lowercase_list: #  or item['domain'].casefold()
-                feed.remove(item)
-            else:
-                date = item.get('published')[:-15] # remove the timestamp from the date
-                item.update({'published':date})
+    for item in feed:
+        date = item.get('published')[:-15] # remove the timestamp from the date
+        item.update({'published':date})
 
-                parsed_uri = urlparse(item.get('link')) # instructions: https://stackoverflow.com/questions/1521592/get-root-domain-of-link
-                domain = '{uri.netloc}'.format(uri=parsed_uri)
-                domain = domain.replace('www.', '')
-                item.update({'domain': domain})
+        parsed_uri = urlparse(item.get('link')) # instructions: https://stackoverflow.com/questions/1521592/get-root-domain-of-link
+        domain = '{uri.netloc}'.format(uri=parsed_uri)
+        domain = domain.replace('www.', '')
+        item.update({'domain': domain})
+
+        if item['domain'] in filtered_urls: #  or item['domain'].casefold()
+            feed.remove(item)
+        else:
+            pass
     
     return feed[:30]
 
