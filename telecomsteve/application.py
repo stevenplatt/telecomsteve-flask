@@ -37,7 +37,10 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
 
     for term in filtered:
         for item in feed:
-            if term.casefold() in item.values().casefold(): #  or item['domain'].casefold()
+            item_list = list(item.values())
+            lowercase_list = [item.lower() for item in item_list]
+
+            if term.lower() in lowercase_list: #  or item['domain'].casefold()
                 feed.remove(item)
             else:
                 date = item.get('published')[:-15] # remove the timestamp from the date
