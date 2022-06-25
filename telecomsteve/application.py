@@ -65,7 +65,7 @@ def world():
 
 @application.route("/research", methods=["POST", "GET"])
 def research():
-    return render_template('research_main.html')
+    return render_template('research.html')
 
 @application.route("/login", methods=["POST", "GET"])
 def login():
