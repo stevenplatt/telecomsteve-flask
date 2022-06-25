@@ -2,7 +2,7 @@
 # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html
 # push updated deployment using 'eb deploy' from within the folder telecomsteve/
 
-import os, feedparser, arxivpy
+import os, feedparser
 import dateutil.parser
 from flask import Flask, render_template, request, url_for
 from urllib.parse import urlparse
@@ -65,22 +65,7 @@ def world():
 
 @application.route("/research", methods=["POST", "GET"])
 def research():
-
-    if request.method == 'POST': # source: https://pythonbasics.org/flask-http-methods/
-        query = request.form['search-query'] # get form input
-        clean_query = query.replace(" ", "+") # replace spaces within input
-        papers = arxivpy.query(search_query=f'all:{clean_query}&start=0&max_results=20', sort_by='relevance') # return results
-        
-        for item in papers: # show only the date and not the time with results
-            date = item.get('publish_date').date()
-            item.update({'publish_date': date})
-            abstract = item.get('abstract')[:500] # get only the first 500 charecters of the abstract
-            item.update({'abstract': abstract})
-
-        return render_template('research_results.html', results=papers, query=query)
-
-    else:
-        return render_template('research_main.html')
+    return render_template('research_main.html')
 
 @application.route("/login", methods=["POST", "GET"])
 def login():
