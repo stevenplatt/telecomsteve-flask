@@ -35,8 +35,8 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
     feed = [item for feed in feeds for item in feed]
     feed.sort(key=lambda x: dateutil.parser.parse(x['published']), reverse=True)
 
-    for item in feed:
-        for term in filtered:
+    for term in filtered:
+        for item in feed:
             if term in (item['title'].lower() or item['domain'].lower()):
                 feed.remove(item)
             else:
