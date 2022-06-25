@@ -12,6 +12,7 @@ application = Flask(__name__)
 # these urls are filtered because they are often behind a paywall
 filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'economist.com', 'reuters.com']
 filtered_terms = ['trump', 'roe', 'abortion', 'shooting', 'gun', 'israel', 'first mover', 'bitcoin']
+
 filtered = filtered_urls + filtered_terms
 
 def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
@@ -35,13 +36,16 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
     feed.sort(key=lambda x: dateutil.parser.parse(x['published']), reverse=True)
 
     for item in feed:
-        date = item.get('published')[:-15] # remove the timestamp from the date
-        item.update({'published':date})
+        if any(filtered) in item: feed.remove(item)  
 
-        parsed_uri = urlparse(item.get('link')) # instructions: https://stackoverflow.com/questions/1521592/get-root-domain-of-link
-        domain = '{uri.netloc}'.format(uri=parsed_uri)
-        domain = domain.replace('www.', '')
-        item.update({'domain': domain})
+        else:
+            date = item.get('published')[:-15] # remove the timestamp from the date
+            item.update({'published':date})
+
+            parsed_uri = urlparse(item.get('link')) # instructions: https://stackoverflow.com/questions/1521592/get-root-domain-of-link
+            domain = '{uri.netloc}'.format(uri=parsed_uri)
+            domain = domain.replace('www.', '')
+            item.update({'domain': domain})
 
     return feed[:30]
 
