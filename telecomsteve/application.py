@@ -44,11 +44,6 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
         domain = '{uri.netloc}'.format(uri=parsed_uri)
         domain = domain.replace('www.', '')
         item.update({'domain': domain})
-
-        if item['domain'] in filtered_urls: #  or item['domain'].casefold()
-            feed.remove(item)
-        else:
-            pass
     
     return feed[:30]
 
