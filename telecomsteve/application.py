@@ -3,6 +3,7 @@
 # push updated deployment using 'eb deploy' from within the folder telecomsteve/
 
 import os, feedparser
+from turtle import title
 import dateutil.parser
 from flask import Flask, render_template, request, url_for
 from urllib.parse import urlparse
@@ -13,7 +14,6 @@ application = Flask(__name__)
 filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'economist.com', 'reuters.com', 'theverge.com']
 filtered_terms = ['trump', 'roe', 'abortion', 'shooting', 'gun', 'israel', 'first mover', 'bitcoin']
 
-filtered = filtered_urls + filtered_terms
 
 def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
 
@@ -44,6 +44,11 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
         domain = '{uri.netloc}'.format(uri=parsed_uri)
         domain = domain.replace('www.', '')
         item.update({'domain': domain})
+
+        title = item.get('title')
+        for term in filtered_terms:
+            if term in title:
+                feed.remove(item)
     
     return feed[:30]
 
@@ -54,17 +59,17 @@ def home():
 @application.route("/news", methods=["GET"]) 
 def technology(): 
     content = newsfeed('technology')
-    return render_template('news.html', news=content, blocked=filtered, category='technology')
+    return render_template('news.html', news=content, blocked=filtered_urls, category='technology')
 
 @application.route("/engineering", methods=["GET"])
 def engineering(): 
     content = newsfeed('engineering')
-    return render_template('news.html', news=content, blocked=filtered, category='engineering')
+    return render_template('news.html', news=content, blocked=filtered_urls, category='engineering')
 
 @application.route("/world", methods=["GET"]) 
 def world(): 
     content = newsfeed('world')
-    return render_template('news.html', news=content, blocked=filtered, category='world')
+    return render_template('news.html', news=content, blocked=filtered_urls, category='world')
 
 @application.route("/research", methods=["GET"])
 def research():
