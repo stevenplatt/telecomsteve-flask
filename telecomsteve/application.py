@@ -36,7 +36,7 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
     feed.sort(key=lambda x: dateutil.parser.parse(x['published']), reverse=True)
 
     for item in feed:
-        if any(filtered) in item.casefold(): feed.remove(item)  
+        if any(filtered) in item.lower(): feed.remove(item)  
 
         else:
             date = item.get('published')[:-15] # remove the timestamp from the date
