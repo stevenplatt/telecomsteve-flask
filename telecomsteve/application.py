@@ -48,7 +48,7 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
             if term.lower() in str(item.get('title')).lower():
                 item.update({'domain': 'filtered'})
     
-    return feed[:30]
+    return feed[:35]
 
 @application.route("/")
 def home():
