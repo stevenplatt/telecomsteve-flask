@@ -26,10 +26,10 @@
             <p>Select a topic above to change news sources.</p>
             <br>
             
-            <!-- construct each Hackernews story -->
+            <!-- construct each news story -->
             <div class="main-content">
             {% for story in news %}
-                {% if story['href'] != [] and (story['domain'] not in blocked_url or any(blocked_term) not in story['title']) %}    
+                {% if story['href'] != [] and any(blocked) not in story) %}    
                     <h3 class="news_accent"><a href="{{ story['link'] }}" target="_blank">{{ story['title'] }}</a> <span class="news_domain">({{ story['domain'] }})</span> </h3>
                     <br>
                 {% else %}

@@ -11,7 +11,8 @@ application = Flask(__name__)
 
 # these urls are filtered because they are often behind a paywall
 filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'economist.com', 'reuters.com']
-filtered_terms = ['trump', 'roe', 'abortion', 'shooting', 'gun', 'israel']
+filtered_terms = ['trump', 'roe', 'abortion', 'shooting', 'gun', 'israel', 'first mover', 'bitcoin']
+filtered = filtered_urls + filtered_terms
 
 def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
 
@@ -51,17 +52,17 @@ def home():
 @application.route("/news", methods=["GET"]) 
 def technology(): 
     content = newsfeed('technology')
-    return render_template('news.html', news=content, blocked_url=filtered_urls, blocked_term=filtered_terms, category='technology')
+    return render_template('news.html', news=content, blocked=filtered, category='technology')
 
 @application.route("/engineering", methods=["GET"])
 def engineering(): 
     content = newsfeed('engineering')
-    return render_template('news.html', news=content, blocked_url=filtered_urls, blocked_term=filtered_terms, category='engineering')
+    return render_template('news.html', news=content, blocked=filtered, category='engineering')
 
 @application.route("/world", methods=["GET"]) 
 def world(): 
     content = newsfeed('world')
-    return render_template('news.html', news=content, blocked_url=filtered_urls, blocked_term=filtered_terms, category='world')
+    return render_template('news.html', news=content, blocked=filtered, category='world')
 
 @application.route("/research", methods=["GET"])
 def research():
