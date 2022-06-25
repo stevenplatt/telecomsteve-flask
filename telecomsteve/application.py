@@ -48,7 +48,10 @@ def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
         title = item.get('title')
         for term in filtered_terms:
             if term in title:
-                feed.remove(item)
+                remove_filtered_terms(item)
+    
+    def remove_filtered_terms(item):
+        feed.remove(item)
     
     return feed[:30]
 
