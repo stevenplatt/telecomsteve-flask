@@ -17,19 +17,18 @@ filtered_terms = ['trump', 'roe', 'abortion', 'shooting', 'gun', 'israel', 'firs
 
 def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
 
-    if topic == 'engineering':
+    if topic == 'finance':
         # a list of sources used to pull in engineering news
-        urls = ['https://hnrss.org/frontpage'] # source: https://hnrss.github.io/ (a hacker news rss feed)
+        urls = ['https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml', 'https://www.cnbc.com/id/100727362/device/rss/rss.html'] # source: https://hnrss.github.io/ (a hacker news rss feed)
     
-    elif topic == 'world':
+    # elif topic == 'world':
         # a list of sources used to pull in world news
-        urls = ['https://www.aljazeera.com/xml/rss/all.xml',
-            'https://www.cnbc.com/id/100727362/device/rss/rss.html']
+        # urls = ['https://www.aljazeera.com/xml/rss/all.xml',
+            # 'https://www.cnbc.com/id/100727362/device/rss/rss.html']
 
     else:
         # a list of sources used to pull in technology news
-        urls = ['https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml',
-            'https://www.theverge.com/rss/index.xml'] # 'https://www.fiercewireless.com/rss/xml' 
+        urls = ['https://www.theverge.com/rss/index.xml', 'https://hnrss.org/frontpage'] # 'https://www.fiercewireless.com/rss/xml' 
 
     feeds = [feedparser.parse(url)['entries'] for url in urls]
     feed = [item for feed in feeds for item in feed]
