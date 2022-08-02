@@ -63,10 +63,15 @@ def engineering():
     content = newsfeed('engineering')
     return render_template('news.html', news=content, blocked=filtered_urls, category='engineering')
 
-@application.route("/world", methods=["GET"]) 
-def world(): 
-    content = newsfeed('world')
-    return render_template('news.html', news=content, blocked=filtered_urls, category='world')
+# @application.route("/world", methods=["GET"]) 
+# def world(): 
+#    content = newsfeed('world')
+#    return render_template('news.html', news=content, blocked=filtered_urls, category='world')
+
+@application.route("/finance", methods=["GET"]) 
+def finance(): 
+    content = newsfeed('finance')
+    return render_template('news.html', news=content, blocked=filtered_urls, category='finance')
 
 @application.route("/research", methods=["GET"])
 def research():
