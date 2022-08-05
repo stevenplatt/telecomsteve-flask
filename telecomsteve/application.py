@@ -64,7 +64,7 @@ def engineering():
     return render_template('news.html', news=content, blocked=filtered_urls, category='engineering')
 
 @application.route("/world", methods=["GET"]) 
- def world(): 
+def world(): 
     content = newsfeed('world')
     return render_template('news.html', news=content, blocked=filtered_urls, category='world')
 
