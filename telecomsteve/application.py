@@ -11,8 +11,8 @@ from urllib.parse import urlparse
 application = Flask(__name__)
 
 # these urls are filtered because they are often behind a paywall
-filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'economist.com', 'reuters.com', 'filtered']
-filtered_terms = ['trump', 'roe', 'abortion', 'shooting', 'gun', 'israel', 'first mover', 'bitcoin', 'elon', 'musk', 'tesla', 'supreme court']
+filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'ft.com', 'economist.com', 'reuters.com', 'washingtonpost.com', 'filtered']
+filtered_terms = ['trump', 'roe', 'abortion', 'shooting', 'gun', 'israel', 'first mover', 'elon', 'musk', 'tesla', 'supreme court']
 
 
 def newsfeed(topic): # source https://waylonwalker.com/parsing-rss-python/
