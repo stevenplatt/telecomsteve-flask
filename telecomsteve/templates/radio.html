@@ -1,11 +1,25 @@
 {% extends "sidebar.html" %}
 {% block content %}
+
     <div w3-include-html="../navbar_index.html"></div>
+    <link rel="stylesheet" href="../static/radio.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
         <div class="main">
 
-            <p>Pick Your Vibe</p>
-            <br>
-            <p>Web3 Radio is a decentralized demo application for the book Web3 Application Architecture (Steven Platt, Manning Publishing 2023).</p>
-
+            <div class="radio_parent blue">
+                <div class="radio_box green"><button class="bn30">Classic</button></div>
+                <div class="radio_box green"><button class="bn30">Ambient</button></div>
+                <div class="radio_box green"><button class="bn30">LoFi</button></div>
+            </div>
+            <div class="radio_text">
+                <p class="radio_header">Choose Your Vibe</p>
+                <br>
+                <p>Web3 Radio is a decentralized demo application for the book Web3 Application Architecture <br><br>
+                    (Steven Platt, Manning Publishing 2023)</p>
+            </div>
         </div>
+
 {% endblock content %}
