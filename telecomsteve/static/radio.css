@@ -17,7 +17,6 @@ text-align: center;
 
 .radio_text {
 	text-align: center;
-    color: #818181;
 }
 
 .radio_header {
@@ -37,7 +36,7 @@ https://codepen.io/folaad/pen/YvmRpz */
     font-size: 18px;
     -webkit-transform: translate(0);
     transform: translate(0);
-    background-image: linear-gradient(45deg, #4568dc, #b06ab3);
+    background-image: linear-gradient(45deg, #428fbb, #dba4dd);
     padding: 0.7em 2em;
     border-radius: 65px;
     box-shadow: 2px 2px 20px rgba(55, 55, 225, 0.438);
@@ -53,14 +52,14 @@ https://codepen.io/folaad/pen/YvmRpz */
 background-clip: text;
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
-background-image: linear-gradient(45deg, #4568dc, #b06ab3);
+background-image: linear-gradient(45deg, #428fbb, #b06ab3);
 }
 
 .bn30:after {
 content: "";
 border-radius: 70%;
 position: absolute;
-margin: 1px;
+margin: 2px;
 top: 0;
 left: 0;
 bottom: 0;
@@ -70,10 +69,16 @@ background: white;
 }
 
 .bn30:hover {
-background-image: linear-gradient(-45deg, #4568dc, #b06ab3);
+background-image: linear-gradient(-45deg, #428fbb, #dba4dd);
 box-shadow: 0 12px 24px rgba(128, 128, 128, 0.1);
 }
 
 .bn30:hover .text {
-background-image: linear-gradient(-45deg, #4568dc, #b06ab3);
+background-image: linear-gradient(-45deg, #428fbb, #dba4dd);
+}
+
+.playing {
+    font-family: 'Permanent Marker', cursive;
+    background-image: linear-gradient(45deg, #e9eb71, #dba4dd);
+    color: #f1c40f;
 }
