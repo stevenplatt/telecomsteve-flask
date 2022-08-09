@@ -75,11 +75,11 @@ body {
 }
 
 .resume_accent {
-	color: green;
+	color: rgb(72, 158, 72);
 }
 
 .research_accent {
-	color: #e74c3c;
+	color: #b06ab3;
 }
 
 .blog_accent {
