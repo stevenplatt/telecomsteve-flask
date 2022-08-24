@@ -24,7 +24,8 @@ def newsfeed(topic):  # source https://waylonwalker.com/parsing-rss-python/
         # a list of sources used to pull in engineering news
         # source: https://hnrss.github.io/ (a hacker news rss feed)
         urls = ['https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml',
-                'https://www.cnbc.com/id/100727362/device/rss/rss.html']
+                'https://www.cnbc.com/id/100727362/device/rss/rss.html',
+                'https://decrypt.co/feed']
 
     # elif topic == 'world':
         # a list of sources used to pull in world news
