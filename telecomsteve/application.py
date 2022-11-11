@@ -13,9 +13,9 @@ application = Flask(__name__)
 
 # these urls are filtered because they are often behind a paywall
 filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com',
-                 'ft.com', 'economist.com', 'reuters.com', 'washingtonpost.com', 'filtered']
-filtered_terms = ['trump', 'roe', 'abortion', 'shooting', 'gun',
-                  'first mover', 'elon', 'musk', 'tesla', 'supreme court', 'bitcoin', 'hiring']
+                'ft.com', 'economist.com', 'reuters.com', 'washingtonpost.com', 'filtered']
+filtered_terms = ['twitter', 'trump', 'roe', 'abortion', 'shooting', 'gun',
+                'first mover', 'elon', 'musk', 'tesla', 'supreme court', 'bitcoin', 'hiring']
 
 
 def newsfeed(topic):  # source https://waylonwalker.com/parsing-rss-python/
@@ -36,6 +36,7 @@ def newsfeed(topic):  # source https://waylonwalker.com/parsing-rss-python/
         # a list of sources used to pull in technology news
         # 'https://www.fiercewireless.com/rss/xml'
         urls = ['https://www.theverge.com/rss/index.xml',
+                'https://www.computer.org/category/tech-news-post/feed/',
                 'https://hnrss.org/frontpage']
 
     feeds = [feedparser.parse(url)['entries'] for url in urls]
