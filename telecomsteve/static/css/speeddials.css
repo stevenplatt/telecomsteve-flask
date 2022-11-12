@@ -1,0 +1,127 @@
+body {
+	background-color: black;
+	background-image: url(322423.jpg);
+}
+
+ul.main {
+	list-style-type: none;
+	display: table;
+	padding: 0;
+	clear: both;
+	margin: 0 auto;
+	text-align: center;
+}
+
+li.dial {
+	width: 300px;
+	height: 200px;
+	display: inline-table;
+	box-sizing: border-box;
+	padding: 10px;
+	outline: 0;
+	margin: 0;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+}
+
+li.dial a:hover {
+	opacity: 0.75;
+}
+
+li.dial a {
+	width: 100%;
+	height: 100%;
+	background-color: #badaff;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	padding: 10px;
+	display: table-cell;
+	text-decoration: none;
+	color: #0000ff;
+}
+
+li.dial a:active {
+	color: #0000ff;
+}
+
+.dial .site {
+	font-size: 13px;
+}
+
+li.dial div.thumb {
+	background-color: #fff;
+	width: 100%;
+	height: 90%;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	display: block;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+li.dial div.site {
+	background-color: transparent;
+	width: 100%;
+	height: 14%;
+	display: block;
+	padding-top: 3px;
+	text-align: center;
+}
+
+@media only screen and (min-width: 150px) and (max-width: 1245px) {
+	ul.main {
+		width: 1099px;
+	}
+
+	li.dial {
+		width: 260px;
+		height: 175px;
+	}
+}
+
+@media only screen and (min-width: 150px) and (max-width: 1110px) {
+	ul.main {
+		width: 978px;
+	}
+
+	li.dial {
+		width: 230px;
+		height: 152px;
+	}
+}
+
+@media only screen and (min-width: 150px) and (max-width: 986px) {
+	ul.main {
+		width: 843px;
+	}
+
+	li.dial {
+		width: 200px;
+		height: 132px;
+	}
+}
+
+@media only screen and (min-width: 150px) and (max-width: 855px) {
+	ul.main {
+		width: 750px;
+	}
+
+	li.dial {
+		width: 160px;
+		height: 110px;
+	}
+}
+
+@media only screen and (min-width: 150px) and (max-width: 760px) {
+	ul.main {
+		width: 97%;
+	}
+
+	li.dial {
+		width: 160px;
+		height: 110px;
+	}
+}
