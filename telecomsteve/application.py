@@ -66,12 +66,6 @@ def newsfeed(topic):  # source https://waylonwalker.com/parsing-rss-python/
 def home():
     return render_template('index.html')
 
-
-@application.route("/radio")
-def radio():
-    return render_template('radio.html')
-
-
 @application.route("/news", methods=["GET"])
 def technology():
     content = newsfeed('technology')
