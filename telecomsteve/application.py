@@ -27,16 +27,10 @@ def newsfeed(topic):  # source https://waylonwalker.com/parsing-rss-python/
                 'https://www.cnbc.com/id/100727362/device/rss/rss.html',
                 'https://decrypt.co/feed']
 
-    # elif topic == 'world':
-        # a list of sources used to pull in world news
-        # urls = ['https://www.aljazeera.com/xml/rss/all.xml',
-        # 'https://www.cnbc.com/id/100727362/device/rss/rss.html']
-
     else:
         # a list of sources used to pull in technology news
         # 'https://www.fiercewireless.com/rss/xml'
         urls = ['https://www.theverge.com/rss/index.xml',
-                'https://www.computer.org/category/tech-news-post/feed/',
                 'https://hnrss.org/frontpage']
 
     feeds = [feedparser.parse(url)['entries'] for url in urls]
@@ -67,33 +61,18 @@ def home():
     return render_template('index.html')
 
 @application.route("/news", methods=["GET"])
-def technology():
-    content = newsfeed('technology')
-    return render_template('news.html', news=content, blocked=filtered_urls, category='technology')
-
-
-@application.route("/engineering", methods=["GET"])
 def engineering():
     content = newsfeed('engineering')
     return render_template('news.html', news=content, blocked=filtered_urls, category='engineering')
-
-
-@application.route("/world", methods=["GET"])
-def world():
-    content = newsfeed('world')
-    return render_template('news.html', news=content, blocked=filtered_urls, category='world')
-
 
 @application.route("/finance", methods=["GET"])
 def finance():
     content = newsfeed('finance')
     return render_template('news.html', news=content, blocked=filtered_urls, category='finance')
 
-
 @application.route("/research", methods=["GET"])
 def research():
     return render_template('research.html')
-
 
 @application.route("/login", methods=["POST", "GET"])
 def login():
@@ -113,7 +92,6 @@ def login():
 
     else:
         return render_template('login.html', message=welcome_message)
-
 
 # run the app.
 if __name__ == "__main__":

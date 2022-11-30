@@ -3,20 +3,14 @@
     <div w3-include-html="../navbar_index.html"></div>
         <div class="main">
         
-        {% if category == 'technology' %}
+        {% if category == 'engineering' %}
             <h1>
                 <span style="color:#f1c40f; font-size:125%">Engineering</span> &nbsp;
                 <a style="color:#cdd0d4; font-size:75%" href="{{ url_for('finance') }}">Finance and Web3</a>
             </h1>
-        {% elif category == 'engineering' %}
-            <h1>
-                <a style="color:#cdd0d4; font-size:75%" href="{{ url_for('technology') }}">Technology</a> &nbsp;
-                <span style="color:#f1c40f; font-size:125%">Engineering</span>
-                &nbsp; <a style="color:#cdd0d4; font-size:75%" href="{{ url_for('world') }}">World</a>
-            </h1>
         {% else %}
             <h1>
-                <a style="color:#cdd0d4; font-size:75%" href="{{ url_for('technology') }}">Engineering</a> &nbsp;
+                <a style="color:#cdd0d4; font-size:75%" href="{{ url_for('engineering') }}">Engineering</a> &nbsp;
                 <span style="color:#f1c40f; font-size:125%">Finance and Web3</span>
             </h1>
         {% endif %}
