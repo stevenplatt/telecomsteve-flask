@@ -5,8 +5,7 @@
         
         {% if category == 'technology' %}
             <h1>
-                <span style="color:#f1c40f; font-size:125%">Technology</span> &nbsp;
-                <!-- &nbsp; <a style="color:#cdd0d4; font-size:75%" href="{{ url_for('engineering') }}">Engineering</a> -->
+                <span style="color:#f1c40f; font-size:125%">Engineering</span> &nbsp;
                 <a style="color:#cdd0d4; font-size:75%" href="{{ url_for('finance') }}">Finance</a>
             </h1>
         {% elif category == 'engineering' %}
@@ -18,8 +17,7 @@
         {% else %}
             <h1>
                 <a style="color:#cdd0d4; font-size:75%" href="{{ url_for('technology') }}">Technology</a> &nbsp;
-                <!-- <a style="color:#cdd0d4; font-size:75%" href="{{ url_for('engineering') }}">Engineering</a> &nbsp; -->
-                <span style="color:#f1c40f; font-size:125%">Finance</span>
+                <span style="color:#f1c40f; font-size:125%">Finance and Web3</span>
             </h1>
         {% endif %}
 
