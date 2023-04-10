@@ -15,7 +15,7 @@ application = Flask(__name__)
 filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com',
                 'ft.com', 'economist.com', 'reuters.com', 'washingtonpost.com', 'filtered']
 filtered_terms = ['twitter', 'trump', 'roe', 'abortion', 'shooting', 'gun',
-                'first mover', 'elon', 'musk', 'tesla', 'ftx', 'sbf', 'sam', 'supreme court', 'bitcoin', 'hiring']
+                'first mover', 'elon', 'musk', 'chatgpt', 'LLM', 'ftx', 'sbf', 'sam', 'supreme court', 'bitcoin', 'hiring']
 
 
 def newsfeed(topic):  # source https://waylonwalker.com/parsing-rss-python/
