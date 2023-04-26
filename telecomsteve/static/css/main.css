@@ -2,6 +2,11 @@ body {
 	font-family: "Lato", sans-serif;
 }
 
+h1 {
+	font-family: 'Rock Salt', cursive;
+	color:#f1c40f;
+}
+
 /* Style page content */
 .main {
 	margin-left: 20%; /* Same as the width of the sidenav */
@@ -71,15 +76,15 @@ body {
 }
 
 .about_accent {
-	color: green;
+	color: #59b300;
 }
 
 .resume_accent {
-	color: rgb(72, 158, 72);
+	color: #59b300;
 }
 
 .research_accent {
-	color: #b06ab3;
+	color: #bf80ff;
 }
 
 .blog_accent {
@@ -167,7 +172,7 @@ td {
 
 .about_links {
 	text-align: center;
-	padding: 5% 5% 5% 5%;
+	padding: 0% 5% 5% 5%;
 }
 
 .portfolio_accent {

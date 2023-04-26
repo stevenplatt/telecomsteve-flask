@@ -60,6 +60,18 @@ def newsfeed(topic):  # source https://waylonwalker.com/parsing-rss-python/
 def home():
     return render_template('index.html')
 
+@application.route("/research", methods=["GET"])
+def research():
+    return render_template('research.html')
+
+@application.route("/jobs", methods=["GET"])
+def jobs():
+    return render_template('jobs.html', category='jobs')
+
+@application.route("/jobs_30days", methods=["GET"])
+def jobs_30days():
+    return render_template('jobs.html', category='jobs_30days')
+
 @application.route("/news", methods=["GET"])
 def engineering():
     content = newsfeed('engineering')
@@ -69,10 +81,6 @@ def engineering():
 def finance():
     content = newsfeed('finance')
     return render_template('news.html', news=content, blocked=filtered_urls, category='finance')
-
-@application.route("/research", methods=["GET"])
-def research():
-    return render_template('research.html')
 
 @application.route("/login", methods=["POST", "GET"])
 def login():
