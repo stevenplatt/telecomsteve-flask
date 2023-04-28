@@ -6,7 +6,7 @@
 
 <br />
 
-Repository for teh Python Flask app powering https://www.telecomsteve.com/
+Repository for the Python Flask app powering https://www.telecomsteve.com/
 
 Site template based on [ResearchEng template](https://github.com/stevenplatt/ResearchEng-portfolio)
 
