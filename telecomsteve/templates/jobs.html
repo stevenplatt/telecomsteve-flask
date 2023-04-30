@@ -18,16 +18,10 @@
             <div class="main-content">
             
                 <!-- job listings here -->
-                <ul>
-                    {% for job in jobs %}
-                    <li>{{ job.company }} - {{ job.jobTitle }}</li>
-                    {% endfor %}
-                </ul>
                 {% for job in jobs %}  
                     <h3 class="news_accent"><a href="{{ job['url'] }}" target="_blank">{{ job['jobTitle'] }}</a> <span class="news_domain">({{ job['company'] }})</span> </h3>
                     <br>
-                {% endif %}
-            {% endfor %}
+                {% endfor %}
             </div>
     </div>
 {% endblock content %}
