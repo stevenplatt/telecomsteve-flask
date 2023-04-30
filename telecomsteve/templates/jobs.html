@@ -8,7 +8,6 @@
             </h1>
             <br>
                 <p>
-                    Goodbye ghost jobs! <br>
                     These Web3 positions are 100% remote and have become available in the last 30 days. <br>
                 </p>
             <br>
@@ -17,8 +16,11 @@
             
                 <!-- job listings here -->
                 {% for job in jobs %}  
-                    <h3 class="news_accent"><a href="{{ job['url'] }}" target="_blank">{{ job['jobTitle'] }}</a> <span class="news_domain">({{ job['company'] }})</span> </h3>
-                    <br>
+                    <h3 class="news_accent"><a href="{{ job['url'] }}" target="_blank">{{ job['jobTitle'] }}</a> 
+                        <br>
+                            <span class="news_domain">{{ job['company'] }}</span> 
+                        <br>
+                    </h3>
                 {% endfor %}
 
             </div>
