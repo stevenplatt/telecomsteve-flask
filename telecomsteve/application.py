@@ -15,7 +15,7 @@ application = Flask(__name__)
 # Initialize Firestore DB
 # cred = credentials.Certificate('key.json')
 # default_app = initialize_app(cred)
-db = firestore.client()
+db = firestore.Client(project='telecomsteve')
 docs = db.collection('web3-remote-jobs')
 
 # these urls are filtered because they are often behind a paywall
