@@ -67,7 +67,7 @@ def research():
 @application.route("/jobs", methods=["GET"])
 def jobs():
     db = firestore.Client()
-    collection_ref = db.collection(web3-remote-jobs)
+    collection_ref = db.collection('web3-remote-jobs')
 
     # Query all documents in the collection
     query = collection_ref.get()
