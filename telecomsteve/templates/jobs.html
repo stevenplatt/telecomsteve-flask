@@ -2,50 +2,18 @@
 {% block content %}
     <div w3-include-html="../navbar_index.html"></div>
         <div class="main">
-        
-        <!-- categories temporarily disabled -->
 
-        <!--
-        {% if category == 'jobs' %}
             <h1>
-                <span style="color: #bf80ff">All Positions</span> &nbsp;
-                <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('jobs_30days') }}">Recently Posted</a>
+                <span style="color: #bf80ff">Work in Web3</span>
             </h1>
             <br>
                 <p>
-                    I built a web scraper to help family and friends find jobs in Web3. <br>
-                    Bonus: All positions are 100% remote. <br>
+                    Goodbye ghost jobs! <br>
+                    These Web3 positions are 100% remote and have become available in the last 30 days. <br>
                     <br>
                     Coming soon...
                 </p>
             <br>
-        {% else %}
-            <h1>
-                <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('jobs') }}">All Positions</a> &nbsp;
-                <span style="color: #bf80ff">Recently Posted</span>
-            </h1>
-            <br>
-                <p>
-                    Goodbye ghost positions; hello Web3. <br>
-                    These positions have all become available within the last 30days. <br>
-                    <br>
-                    Coming soon...
-                </p>
-            <br>
-        {% endif %}
-        -->
-
-        <h1>
-            <span style="color: #bf80ff">Work in Web3</span>
-        </h1>
-        <br>
-            <p>
-                Goodbye ghost jobs! <br>
-                These Web3 positions are 100% remote and have become available in the last 30 days. <br>
-                <br>
-                Coming soon...
-            </p>
-        <br>
 
             <div class="main-content">
             
@@ -55,21 +23,11 @@
                     <li>{{ job.company }} - {{ job.jobTitle }}</li>
                     {% endfor %}
                 </ul>
-
+                {% for job in jobs %}  
+                    <h3 class="news_accent"><a href="{{ job['url'] }}" target="_blank">{{ job['jobTitle'] }}</a> <span class="news_domain">({{ job['company'] }})</span> </h3>
+                    <br>
+                {% endif %}
+            {% endfor %}
             </div>
     </div>
-
-    <script type="text/javascript" src="../static/js/database.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            const jobs = await getAllJobs();
-            const jobListElement = document.querySelector('.main-content ul');
-
-            jobs.forEach(job => {
-                const listItem = document.createElement('li');
-                listItem.innerText = `${job.company} - ${job.jobTitle}`;
-                jobListElement.appendChild(listItem);
-            });
-        });
-    </script>
 {% endblock content %}

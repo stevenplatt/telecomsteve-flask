@@ -8,6 +8,7 @@ from turtle import title
 import dateutil.parser
 from flask import Flask, render_template, request, url_for
 from urllib.parse import urlparse
+from google.cloud import firestore
 
 application = Flask(__name__)
 
@@ -55,7 +56,6 @@ def newsfeed(topic):  # source https://waylonwalker.com/parsing-rss-python/
 
     return feed[:30]
 
-
 @application.route("/")
 def home():
     return render_template('index.html')
@@ -66,11 +66,18 @@ def research():
 
 @application.route("/jobs", methods=["GET"])
 def jobs():
-    return render_template('jobs.html', category='jobs')
+    db = firestore.Client()
+    collection_ref = db.collection(web3-remote-jobs)
 
-@application.route("/jobs_30days", methods=["GET"])
-def jobs_30days():
-    return render_template('jobs.html', category='jobs_30days')
+    # Query all documents in the collection
+    query = collection_ref.get()
+
+    # Store the retrieved documents
+    records = []
+    for doc in query:
+        records.append(doc.to_dict())
+
+    return render_template('jobs.html', jobs=records)
 
 @application.route("/news", methods=["GET"])
 def engineering():
