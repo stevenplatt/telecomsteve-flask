@@ -13,8 +13,8 @@ from firebase_admin import credentials, firestore, initialize_app
 application = Flask(__name__)
 
 # Initialize Firestore DB
-cred = credentials.Certificate('key.json')
-default_app = initialize_app(cred)
+# cred = credentials.Certificate('key.json')
+# default_app = initialize_app(cred)
 db = firestore.client()
 docs = db.collection('web3-remote-jobs')
 
@@ -22,7 +22,8 @@ docs = db.collection('web3-remote-jobs')
 filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com',
                 'ft.com', 'economist.com', 'reuters.com', 'washingtonpost.com', 'filtered']
 filtered_terms = ['twitter', 'trump', 'roe', 'abortion', 'shooting', 'gun',
-                'first mover', 'elon', 'musk', 'chatgpt', 'LLM', 'ftx', 'sbf', 'sam', 'supreme court', 'bitcoin', 'hiring']
+                'first mover', 'elon', 'musk', 'chatgpt', 'LLM', 'ftx', 'sbf', 
+                'sam', 'supreme court', 'bitcoin', 'hiring']
 
 
 def newsfeed(topic):  # source https://waylonwalker.com/parsing-rss-python/
