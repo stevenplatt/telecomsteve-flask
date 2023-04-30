@@ -8,9 +8,16 @@ from turtle import title
 import dateutil.parser
 from flask import Flask, render_template, request, url_for
 from urllib.parse import urlparse
-from google.cloud import firestore
+import firebase_admin
+from firebase_admin import credentials, firestore, initialize_app
 
 application = Flask(__name__)
+
+# Initialize Firestore DB
+cred = credentials.Certificate('key.json')
+default_app = initialize_app(cred)
+db = firestore.client()
+docs = db.collection('web3-remote-jobs')
 
 # these urls are filtered because they are often behind a paywall
 filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com',
@@ -66,8 +73,6 @@ def research():
 
 @application.route("/jobs", methods=["GET"])
 def jobs():
-    db = firestore.Client(project='telecomsteve')
-    docs = db.collection('web3-remote-jobs')
     all_jobs = [doc.to_dict() for doc in docs.stream()]
     return render_template('jobs.html', jobs=all_jobs)
 
