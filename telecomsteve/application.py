@@ -67,17 +67,9 @@ def research():
 @application.route("/jobs", methods=["GET"])
 def jobs():
     db = firestore.Client(project='telecomsteve')
-    docs = db.collection(u'web3-remote-jobs').stream()
-
-    # Query all documents in the collection
-    query = docs.get()
-
-    # Store the retrieved documents
-    records = []
-    for doc in query:
-        records.append(doc.to_dict())
-
-    return render_template('jobs.html', jobs=records)
+    docs = db.collection('web3-remote-jobs')
+    all_jobs = [doc.to_dict() for doc in docs.stream()]
+    return render_template('jobs.html', jobs=all_jobs)
 
 @application.route("/news", methods=["GET"])
 def engineering():
