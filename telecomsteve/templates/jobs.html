@@ -12,17 +12,16 @@
                 </p>
             <br>
 
-            <div class="main-content">
-            
-                <!-- job listings here -->
-                {% for job in jobs %}  
+            {% for job in jobs %}  
+                <div class="main-content">
                     <h3 class="news_accent"><a href="{{ job['url'] }}" target="_blank">{{ job['jobTitle'] }}</a> 
                         <br>
                             <span class="news_domain">{{ job['company'] }}</span> 
                         <br>
                     </h3>
-                {% endfor %}
+                </div>
+            {% endfor %}
 
-            </div>
+            
     </div>
 {% endblock content %}
