@@ -8,7 +8,6 @@ from turtle import title
 import dateutil.parser
 from flask import Flask, render_template, request, url_for
 from urllib.parse import urlparse
-import firebase_admin
 from firebase_admin import credentials, firestore, initialize_app
 
 application = Flask(__name__)
