@@ -2,6 +2,38 @@
 {% block content %}
     <div w3-include-html="../navbar_index.html"></div>
         <div class="main">
+        
+        <!-- categories temporarily disabled -->
+
+        <!--
+        {% if category == 'jobs' %}
+            <h1>
+                <span style="color: #bf80ff">All Positions</span> &nbsp;
+                <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('jobs_30days') }}">Recently Posted</a>
+            </h1>
+            <br>
+                <p>
+                    I built a web scraper to help family and friends find jobs in Web3. <br>
+                    Bonus: All positions are 100% remote. <br>
+                    <br>
+                    Coming soon...
+                </p>
+            <br>
+        {% else %}
+            <h1>
+                <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('jobs') }}">All Positions</a> &nbsp;
+                <span style="color: #bf80ff">Recently Posted</span>
+            </h1>
+            <br>
+                <p>
+                    Goodbye ghost positions; hello Web3. <br>
+                    These positions have all become available within the last 30days. <br>
+                    <br>
+                    Coming soon...
+                </p>
+            <br>
+        {% endif %}
+        -->
 
         <h1>
             <span style="color: #bf80ff">Work in Web3</span>
@@ -16,12 +48,14 @@
         <br>
 
             <div class="main-content">
+            
                 <!-- job listings here -->
                 <ul>
                     {% for job in jobs %}
                     <li>{{ job.company }} - {{ job.jobTitle }}</li>
                     {% endfor %}
                 </ul>
+
             </div>
     </div>
 
@@ -37,29 +71,5 @@
                 jobListElement.appendChild(listItem);
             });
         });
-
-        async function getAllJobs() {
-            try {
-                const querySnapshot = await db.collection('web3-remote-jobs').get();
-                const jobs = [];
-                
-                querySnapshot.forEach((doc) => {
-                    const { company, dateAdded, jobTitle, url } = doc.data();
-                    
-                    const thirtyOneDaysAgo = new Date();
-                    thirtyOneDaysAgo.setDate(thirtyOneDaysAgo.getDate() - 31);
-                    
-                    if (dateAdded.toDate() > thirtyOneDaysAgo) {
-                        jobs.push({ company, dateAdded, jobTitle, url });
-                    }
-                });
-            
-                return jobs;
-            } catch (e) {
-                console.error('Error retrieving jobs from the database:', e);
-                return [];
-            }
-        }
     </script>
 {% endblock content %}
-
