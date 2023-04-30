@@ -41,7 +41,7 @@
         <br>
             <p>
                 Goodbye ghost jobs! <br>
-                These positions are 100% remote and have become available in the last 30 days. <br>
+                These Web3 positions are 100% remote and have become available in the last 30 days. <br>
                 <br>
                 Coming soon...
             </p>
@@ -50,9 +50,26 @@
             <div class="main-content">
             
                 <!-- job listings here -->
+                <ul>
+                    {% for job in jobs %}
+                    <li>{{ job.company }} - {{ job.jobTitle }}</li>
+                    {% endfor %}
+                </ul>
 
             </div>
     </div>
 
     <script type="text/javascript" src="../static/js/database.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const jobs = await getAllJobs();
+            const jobListElement = document.querySelector('.main-content ul');
+
+            jobs.forEach(job => {
+                const listItem = document.createElement('li');
+                listItem.innerText = `${job.company} - ${job.jobTitle}`;
+                jobListElement.appendChild(listItem);
+            });
+        });
+    </script>
 {% endblock content %}
