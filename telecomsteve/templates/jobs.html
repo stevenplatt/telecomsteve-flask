@@ -16,8 +16,10 @@
                 {% for job in jobs %} 
                 <h3 class="news_accent"><a href="{{ job['url'] }}" target="_blank">{{ job['jobTitle'] }}</a> 
                     <br>
-                        <span class="news_domain">{{ job['company'] }}</span>
+                    <span class="news_domain">
+                        {{ job['company'] }} <br>
                         Salary: unknown
+                    </span>
                 </h3>
                 <br>
                 {% endfor %}
