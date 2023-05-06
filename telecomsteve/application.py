@@ -3,18 +3,15 @@
 # push updated deployment using 'eb deploy' from within the folder telecomsteve/
 
 import os
-import feedparser
 from turtle import title
-import dateutil.parser
 from flask import Flask, render_template, request, url_for
-from urllib.parse import urlparse
 from firebase_admin import credentials, firestore, initialize_app
+
+from static.py.newsfeed import newsfeed
 
 application = Flask(__name__)
 
 # Initialize Firestore DB
-# cred = credentials.Certificate('key.json')
-# default_app = initialize_app(cred)
 db = firestore.Client(project='telecomsteve')
 docs = db.collection('web3-remote-jobs')
 
@@ -24,44 +21,6 @@ filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com',
 filtered_terms = ['twitter', 'trump', 'roe', 'abortion', 'shooting', 'gun',
                 'first mover', 'elon', 'musk', 'chatgpt', 'LLM', 'ftx', 'sbf', 
                 'sam', 'supreme court', 'bitcoin', 'hiring']
-
-
-def newsfeed(topic):  # source https://waylonwalker.com/parsing-rss-python/
-
-    if topic == 'finance':
-        # a list of sources used to pull in engineering news
-        # source: https://hnrss.github.io/ (a hacker news rss feed)
-        urls = ['https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml',
-                'https://www.cnbc.com/id/100727362/device/rss/rss.html',
-                'https://decrypt.co/feed']
-
-    else:
-        # a list of sources used to pull in technology news
-        # 'https://www.fiercewireless.com/rss/xml'
-        urls = ['https://www.theverge.com/rss/index.xml',
-                'https://hnrss.org/frontpage']
-
-    feeds = [feedparser.parse(url)['entries'] for url in urls]
-    feed = [item for feed in feeds for item in feed]
-    feed.sort(key=lambda x: dateutil.parser.parse(
-        x['published']), reverse=True)
-
-    for item in feed:
-        # remove the timestamp from the date
-        date = item.get('published')[:-15]
-        item.update({'published': date})
-
-        # instructions: https://stackoverflow.com/questions/1521592/get-root-domain-of-link
-        parsed_uri = urlparse(item.get('link'))
-        domain = '{uri.netloc}'.format(uri=parsed_uri)
-        domain = domain.replace('www.', '')
-        item.update({'domain': domain})
-
-        for term in filtered_terms:
-            if term.lower() in str(item.get('title')).lower():
-                item.update({'domain': 'filtered'})
-
-    return feed[:30]
 
 @application.route("/")
 def home():
@@ -96,12 +55,10 @@ def login():
 
     # source: https://pythonbasics.org/flask-http-methods/
     if request.method == 'POST':
-
         if username == request.form['name'] and password == request.form['key']:
             return render_template('index.html')
         else:
             return render_template('login.html', message=error_message)
-
     else:
         return render_template('login.html', message=welcome_message)
 
@@ -110,5 +67,4 @@ if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
     application.debug = False
-    # (host="localhost", port=8000) #
     application.run(host='0.0.0.0', port=8080)
