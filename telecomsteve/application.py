@@ -32,7 +32,7 @@ def research():
 
 @application.route("/jobs", methods=["GET"])
 def jobs():
-    all_jobs = [doc.to_dict() for doc in docs.stream()]
+    all_jobs = [doc.to_dict() for doc in docs.limit(30).stream()]
     return render_template('jobs.html', jobs=all_jobs)
 
 @application.route("/news", methods=["GET"])
