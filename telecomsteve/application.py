@@ -3,6 +3,7 @@
 # push updated deployment using 'eb deploy' from within the folder telecomsteve/
 
 import os
+import datetime
 from turtle import title
 from flask import Flask, render_template, request, url_for
 from firebase_admin import credentials, firestore, initialize_app
@@ -32,7 +33,9 @@ def research():
 
 @application.route("/jobs", methods=["GET"])
 def jobs():
-    all_jobs = [doc.to_dict() for doc in docs.order_by('dateAdded', direction=firestore.Query.DESCENDING).limit(25).stream()]
+    today = datetime.datetime.now()
+    thirty_days_ago = today - datetime.timedelta(days=30)
+    all_jobs = [doc.to_dict() for doc in docs.where('dateAdded', '>=', thirty_days_ago).order_by('dateAdded', direction=firestore.Query.DESCENDING).limit(25).stream()]
     return render_template('jobs.html', jobs=all_jobs)
 
 @application.route("/news", methods=["GET"])
