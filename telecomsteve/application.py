@@ -48,6 +48,10 @@ def finance():
     content = newsfeed('finance')
     return render_template('news.html', news=content, blocked=filtered_urls, category='finance')
 
+@application.route("/bookmarks", methods=["POST", "GET"])
+def bookmarks():
+    return render_template('bookmarks.html')
+
 @application.route("/login", methods=["POST", "GET"])
 def login():
 
@@ -59,7 +63,7 @@ def login():
     # source: https://pythonbasics.org/flask-http-methods/
     if request.method == 'POST':
         if username == request.form['name'] and password == request.form['key']:
-            return render_template('index.html')
+            return render_template('bookmarks.html')
         else:
             return render_template('login.html', message=error_message)
     else:
