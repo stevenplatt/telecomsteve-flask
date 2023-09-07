@@ -13,8 +13,7 @@ def newsfeed(topic):
     if topic == 'finance':
         # a list of sources used to pull in engineering news
         # source: https://hnrss.github.io/ (a hacker news rss feed)
-        urls = ['https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml',
-                'https://www.cnbc.com/id/100727362/device/rss/rss.html',
+        urls = ['https://www.cnbc.com/id/100727362/device/rss/rss.html',
                 'https://decrypt.co/feed']
 
     else:
