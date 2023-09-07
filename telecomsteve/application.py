@@ -31,12 +31,13 @@ def home():
 def research():
     return render_template('research.html')
 
-@application.route("/jobs", methods=["GET"])
-def jobs():
-    today = datetime.datetime.now()
-    thirty_days_ago = today - datetime.timedelta(days=30)
-    all_jobs = [doc.to_dict() for doc in docs.where('dateAdded', '>=', thirty_days_ago).order_by('dateAdded', direction=firestore.Query.DESCENDING).limit(25).stream()]
-    return render_template('jobs.html', jobs=all_jobs)
+# deprecated
+# @application.route("/jobs", methods=["GET"])
+# def jobs():
+#     today = datetime.datetime.now()
+#     thirty_days_ago = today - datetime.timedelta(days=30)
+#     all_jobs = [doc.to_dict() for doc in docs.where('dateAdded', '>=', thirty_days_ago).order_by('dateAdded', direction=firestore.Query.DESCENDING).limit(25).stream()]
+#     return render_template('jobs.html', jobs=all_jobs)
 
 @application.route("/news", methods=["GET"])
 def engineering():
