@@ -35,7 +35,7 @@ def research():
 def bookmarks():
     return render_template('bookmarks.html')
 
-@application.route("/bookmarks", methods=["GET"])
+@application.route("/assistant", methods=["GET"])
 def assistant():
     return render_template('assistant.html')
 
