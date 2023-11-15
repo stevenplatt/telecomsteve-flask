@@ -1,177 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flexbox Grid</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-    }
+{% extends "sidebar.html" %}
+{% block content %}
+    <div class="main">
+        <link rel="stylesheet" href="../static/css/bookmarks.css">
 
-    .grid-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start; /* Align to the left */
-      padding: 20px;
-    }
-
-    .grid-item {
-      width: calc(25% - 20px);
-      margin: 10px; /* Equal margin on all sides */
-      border-radius: 10px;
-      box-sizing: border-box;
-      height: 20vh; /* 20% of the viewport height */
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      background-size: cover; /* Ensure the background image covers the entire container */
-      background-blend-mode: multiply; /* Blend the gradient with the background image */
-      color: #ffffff; /* White text color */
-      cursor: pointer; /* Set the cursor to pointer on hover */
-    }
-
-    .plus-icon {
-      width: calc(25% - 20px);
-      margin: 10px;
-      font-size: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #3498db; /* Light Blue for the plus icon */
-      color: #ffffff; /* White color for the plus icon */
-      border-radius: 10px;
-      box-sizing: border-box;
-      height: 20vh; /* 20% of the viewport height */
-      cursor: pointer; /* Set the cursor to pointer on hover */
-    }
-
-    .plus-icon:hover {
-      background-color: #1e90ff; /* Change background color on hover */
-    }
-
-    /* Popup Form Styling */
-    .popup-container {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-      justify-content: center;
-      align-items: center;
-    }
-
-    .popup-form {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-    }
-
-    .popup-form input {
-      margin-bottom: 10px;
-      padding: 10px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    .popup-button {
-      background-color: #3498db;
-      color: #ffffff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-right: 10px;
-    }
-
-    .cancel-button {
-      background-color: #e74c3c; /* Red color for cancel button */
-    }
-
-    /* Media Query for Tablet */
-    @media screen and (max-width: 1023px) {
-      .grid-item,
-      .plus-icon {
-        width: calc(50% - 20px);
-      }
-    }
-
-    /* Media Query for Phone */
-    @media screen and (max-width: 767px) {
-      .grid-item,
-      .plus-icon {
-        width: 100%;
-      }
-    }
-  </style>
-</head>
-<body>
-
-<div class="grid-container" id="gridContainer">
-  <div class="plus-icon" onclick="showPopup()" title="Add Grid Item">&#43;</div>
-</div>
-
-<div class="popup-container" id="popupContainer">
-  <div class="popup-form">
-    <label for="itemText" style="display: none;">Grid Item Text:</label>
-    <input type="text" id="itemText" placeholder="Grid Item Text">
-
-    <label for="destination" style="display: none;">Destination URL:</label>
-    <input type="text" id="destination" placeholder="Destination URL">
-
-    <label for="imageUrl" style="display: none;">Background Image URL:</label>
-    <input type="text" id="imageUrl" placeholder="Background Image URL">
-
-    <button class="popup-button" onclick="addGridItem()">Save</button>
-    <button class="popup-button cancel-button" onclick="hidePopup()">Cancel</button>
-  </div>
-</div>
-
-<script>
-  function showPopup() {
-    var popupContainer = document.getElementById("popupContainer");
-    popupContainer.style.display = "flex";
-  }
-
-  function hidePopup() {
-    var popupContainer = document.getElementById("popupContainer");
-    popupContainer.style.display = "none";
-  }
-
-  function addGridItem() {
-    var itemText = document.getElementById("itemText").value;
-    var destination = document.getElementById("destination").value;
-    var imageUrl = document.getElementById("imageUrl").value;
-
-    if (itemText && destination && imageUrl) {
-      var newGridItem = document.createElement("div");
-      newGridItem.className = "grid-item";
-      newGridItem.innerText = itemText;
-      newGridItem.style.backgroundImage = `linear-gradient(45deg, #ffeb3b, #9c27b0), url('${imageUrl}')`;
-
-      // Open destination URL on click
-      newGridItem.onclick = function () {
-        window.open(destination, "_blank");
-      };
-
-      var gridContainer = document.getElementById("gridContainer");
-      var plusIcon = gridContainer.lastElementChild;
-      gridContainer.insertBefore(newGridItem, plusIcon);
-
-      hidePopup();
-    } else {
-      alert("Please enter all required fields.");
-    }
-  }
-</script>
-
-</body>
-</html>
+        <div class="grid-container" id="gridContainer">
+            <div class="plus-icon" onclick="showPopup()" title="Add New Bookmark">+</div>
+        </div>
+        
+        <div class="popup-container" id="popupContainer">
+            <div class="popup-form">
+            <label for="itemText" style="display: none;">Bookmark Title:</label>
+            <input type="text" id="itemText" placeholder="Bookmark Title">
+        
+            <label for="destination" style="display: none;">Destination URL:</label>
+            <input type="text" id="destination" placeholder="Destination URL">
+        
+            <label for="imageUrl" style="display: none;">Background Image URL (Optional):</label>
+            <input type="text" id="imageUrl" placeholder="Background Image URL (Optional)">
+        
+            <button class="popup-button" onclick="addGridItem()">Save</button>
+            <button class="popup-button cancel-button" onclick="hidePopup()">Cancel</button>
+            </div>
+        </div>
+        
+        <script src="../static/js/bookmarks.js"></script>
+    </div>
+{% endblock content %}
