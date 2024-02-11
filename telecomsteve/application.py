@@ -35,6 +35,11 @@ def finance():
     content = newsfeed('finance')
     return render_template('news.html', news=content, blocked=filtered_urls, category='finance')
 
+@application.route("/world", methods=["GET"])
+def world():
+    content = newsfeed('world')
+    return render_template('news.html', news=content, blocked=filtered_urls, category='world')
+
 # run the app.
 if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be

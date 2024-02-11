@@ -9,12 +9,6 @@ filtered_terms = ['twitter', 'trump', 'roe', 'abortion', 'shooting', 'gun',
                 'first mover', 'elon', 'musk', 'chatgpt', 'LLM', 'ftx', 'sbf', 
                 'sam', 'supreme court', 'bitcoin', 'hiring']
 
-# World News
-
-# NBC: https://feeds.nbcnews.com/nbcnews/public/world
-# The Guardian: https://www.theguardian.com/world/rss
-# BBC: https://feeds.bbci.co.uk/news/world/rss.xml
-
 def newsfeed(topic):
     if topic == 'finance':
         # a list of sources used to pull in engineering news
@@ -22,13 +16,19 @@ def newsfeed(topic):
         urls = ['https://www.cnbc.com/id/100727362/device/rss/rss.html',
                 'https://feeds.bbci.co.uk/news/business/rss.xml']
 
-    else:
+    elif topic == 'engineering':
         # a list of sources used to pull in technology news
         urls = ['https://www.theverge.com/rss/index.xml',
                 'https://hnrss.org/frontpage',
                 'https://www.engadget.com/rss.xml',
                 'https://www.gamespot.com/feeds/mashup/',
                 'https://www.polygon.com/rss/index.xml']
+    
+    elif topic == 'world':
+        # a list of sources used to pull in world news
+        urls = ['https://feeds.nbcnews.com/nbcnews/public/world',
+                'https://www.theguardian.com/world/rss',
+                'https://feeds.bbci.co.uk/news/world/rss.xml']
 
     feeds = [feedparser.parse(url)['entries'] for url in urls]
     feed = [item for feed in feeds for item in feed]

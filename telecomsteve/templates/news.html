@@ -6,12 +6,20 @@
         {% if category == 'engineering' %}
             <h1>
                 <span style="color:#f1c40f">Technology</span> &nbsp;
-                <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('finance') }}">Business and Finance</a>
+                <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('finance') }}">Business and Finance</a> &nbsp;
+                <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('world') }}">World</a>
+            </h1>
+        {% elif category == 'finance' %}
+            <h1>
+                <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('engineering') }}">Technology</a> &nbsp;
+                <span style="color:#f1c40f">Business and Finance</span> &nbsp;
+                <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('world') }}">World</a>
             </h1>
         {% else %}
             <h1>
                 <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('engineering') }}">Technology</a> &nbsp;
-                <span style="color:#f1c40f">Business and Finance</span>
+                <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('finance') }}">Business and Finance</a> &nbsp;
+                <span style="color:#f1c40f">World</span>
             </h1>
         {% endif %}
 
