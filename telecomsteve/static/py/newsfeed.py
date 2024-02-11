@@ -16,7 +16,8 @@ def newsfeed(topic):
     if topic == 'finance':
         # a list of sources used to pull in engineering news
         # source: https://hnrss.github.io/ (a hacker news rss feed)
-        urls = ['https://www.cnbc.com/id/100727362/device/rss/rss.html']
+        urls = ['https://www.cnbc.com/id/100727362/device/rss/rss.html',
+                'http://rss.cnn.com/rss/edition_business.rss']
 
     else:
         # a list of sources used to pull in technology news
