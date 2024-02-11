@@ -9,13 +9,14 @@ filtered_terms = ['twitter', 'trump', 'roe', 'abortion', 'shooting', 'gun',
                 'first mover', 'elon', 'musk', 'chatgpt', 'LLM', 'ftx', 'sbf', 
                 'sam', 'supreme court', 'bitcoin', 'hiring']
 
+# 'http://rss.cnn.com/rss/edition_business.rss',
+# 'https://feeds.bbci.co.uk/news/business/rss.xml'
+
 def newsfeed(topic):
     if topic == 'finance':
         # a list of sources used to pull in engineering news
         # source: https://hnrss.github.io/ (a hacker news rss feed)
-        urls = ['https://www.cnbc.com/id/100727362/device/rss/rss.html',
-                'http://rss.cnn.com/rss/edition_business.rss',
-                'https://feeds.bbci.co.uk/news/business/rss.xml']
+        urls = ['https://www.cnbc.com/id/100727362/device/rss/rss.html']
 
     else:
         # a list of sources used to pull in technology news
