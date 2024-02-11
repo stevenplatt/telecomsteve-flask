@@ -23,6 +23,6 @@ The website is now reachable at http://localhost:8080 in your browser.
 
 <br /><br />
 
-![telecomsteve preview](/screenshots/about_page.png)
+![telecomsteve preview](/telecomsteve/static/img/about_page.png)
 
 <br />
