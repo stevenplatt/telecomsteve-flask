@@ -11,7 +11,7 @@ from static.py.newsfeed import newsfeed
 application = Flask(__name__)
 
 # these urls are filtered because they are often behind a paywall
-filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com',
+filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com',
                 'ft.com', 'economist.com', 'reuters.com', 'washingtonpost.com', 'filtered']
 filtered_terms = ['twitter', 'trump', 'roe', 'abortion', 'shooting', 'gun',
                 'first mover', 'elon', 'musk', 'chatgpt', 'LLM', 'ftx', 'sbf', 
