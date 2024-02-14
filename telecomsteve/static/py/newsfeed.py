@@ -15,7 +15,7 @@ def newsfeed(topic):
         # source: https://hnrss.github.io/ (a hacker news rss feed)
         urls = ['https://www.cnbc.com/id/100727362/device/rss/rss.html',
                 'https://feeds.bbci.co.uk/news/business/rss.xml',
-                'https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml',
+                'https://feeds.a.dj.com/rss/RSSMarketsMain.xml',
                 'https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml']
 
     elif topic == 'engineering':
@@ -24,7 +24,6 @@ def newsfeed(topic):
                 'https://hnrss.org/frontpage',
                 'https://www.engadget.com/rss.xml',
                 'https://www.gamespot.com/feeds/mashup/',
-                'https://www.polygon.com/rss/index.xml',
                 'https://feeds.a.dj.com/rss/RSSWSJD.xml']
     
     elif topic == 'world':
