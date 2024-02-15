@@ -5,9 +5,8 @@ from urllib.parse import urlparse
 # these urls are filtered because they are often behind a paywall
 filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com',
                 'ft.com', 'economist.com', 'reuters.com', 'washingtonpost.com', 'filtered']
-filtered_terms = ['twitter', 'trump', 'roe', 'abortion', 'shooting', 'gun',
-                'first mover', 'elon', 'musk', 'chatgpt', 'LLM', 'ftx', 'sbf', 
-                'sam', 'supreme court', 'bitcoin', 'hiring']
+filtered_terms = ['trump', 'roe', 'abortion', 'shooting', 'gun', 'first mover',
+                'elon', 'musk', 'chatgpt', 'LLM', 'ftx', 'deal', 'deals', 'hiring']
 
 def newsfeed(topic):
     if topic == 'finance':
