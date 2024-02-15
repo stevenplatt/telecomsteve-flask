@@ -6,7 +6,8 @@ from urllib.parse import urlparse
 filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com',
                 'ft.com', 'economist.com', 'reuters.com', 'washingtonpost.com', 'filtered']
 filtered_terms = ['trump', 'roe', 'abortion', 'shooting', 'gun', 'first mover',
-                'elon', 'musk', 'chatgpt', 'LLM', 'ftx', 'deal', 'deals', 'hiring']
+                'elon', 'musk', 'chatgpt', 'LLM', 'ftx', 'deal', 'deals', 'hiring',
+                'best', 'only', 'most', 'every', 'deal']
 
 def newsfeed(topic):
     if topic == 'finance':
