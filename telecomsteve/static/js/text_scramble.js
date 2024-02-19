@@ -58,7 +58,7 @@ const phrases = [
     'CI pipelines that pass, the first time',
     'Hyperscale with Kubernetes',
     'Operate peer-to-peer without infrastructure',
-    'Repeat deployments with Terraform',
+    'Repeatable testnets with Terraform',
     'Eliminate configuration drift with ArgoCD'
 ]
 

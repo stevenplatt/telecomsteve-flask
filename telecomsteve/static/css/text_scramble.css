@@ -28,6 +28,6 @@
 		position: static; /* Default value for position */
 		top: auto; /* Default value for top */
 		transform: none; /* Default value for transform */
-		font-size: 20px;
+		font-size: 30px;
 	}
 }
