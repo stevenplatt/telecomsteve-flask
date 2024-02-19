@@ -59,7 +59,8 @@ const phrases = [
     'Hyperscale with Kubernetes',
     'Operate peer-to-peer without infrastructure',
     'Repeatable testnets with Terraform',
-    'Eliminate configuration drift with ArgoCD'
+    'Eliminate configuration drift with ArgoCD',
+    'Hybrid cloud, any cloud'
 ]
 
 const el = document.querySelector('.text-scramble');
