@@ -24,10 +24,10 @@ def newsfeed(topic):
                 'https://www.engadget.com/rss.xml',
                 'https://www.gamespot.com/feeds/mashup/']
     
-    elif topic == 'world':
+    elif topic == 'web3':
         # a list of sources used to pull in world news
-        urls = ['https://feeds.nbcnews.com/nbcnews/public/world',
-                'https://feeds.bbci.co.uk/news/world/rss.xml']
+        urls = ['https://www.coindesk.com/arc/outboundfeeds/rss/',
+                'https://decrypt.co/feed']
 
     feeds = [feedparser.parse(url)['entries'] for url in urls]
     feed = [item for feed in feeds for item in feed]

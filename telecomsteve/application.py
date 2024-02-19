@@ -11,7 +11,7 @@ from static.py.newsfeed import newsfeed
 application = Flask(__name__)
 
 # these urls are filtered because they are often behind a paywall
-filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com',
+filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com',
                 'ft.com', 'economist.com', 'reuters.com', 'washingtonpost.com', 'filtered']
 filtered_terms = ['twitter', 'trump', 'roe', 'abortion', 'shooting', 'gun',
                 'first mover', 'elon', 'musk', 'chatgpt', 'LLM', 'ftx', 'sbf', 
@@ -35,10 +35,10 @@ def finance():
     content = newsfeed('finance')
     return render_template('news.html', news=content, blocked=filtered_urls, category='finance')
 
-@application.route("/world", methods=["GET"])
-def world():
-    content = newsfeed('world')
-    return render_template('news.html', news=content, blocked=filtered_urls, category='world')
+@application.route("/web3", methods=["GET"])
+def web3():
+    content = newsfeed('web3')
+    return render_template('news.html', news=content, blocked=filtered_urls, category='web3')
 
 # run the app.
 if __name__ == "__main__":
