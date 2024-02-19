@@ -1,3 +1,9 @@
+.logo img {
+	width: 300px;
+	height: auto;
+	float: right;
+}
+
 .hero-scramble {
 	height: 100%;
 	width: 100%;
@@ -20,6 +26,10 @@
 }
 
 @media screen and (max-width: 1100px) {
+	.logo img {
+		width: 200px;
+	}
+
 	.hero-scramble {
 		line-height: 45px;
 	}
@@ -28,6 +38,6 @@
 		position: static; /* Default value for position */
 		top: auto; /* Default value for top */
 		transform: none; /* Default value for transform */
-		font-size: 30px;
+		font-size: 24px;
 	}
 }

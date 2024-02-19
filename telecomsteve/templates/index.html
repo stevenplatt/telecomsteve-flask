@@ -1,9 +1,14 @@
+{% block head %}
+    <title>telecomsteve: DevOps consulting for startups and Web3</title>
+    <meta name="description" content="telecomsteve is a boutique DevOps consulting firm that empowers startups and Web3 teams to launch faster, scale smarter, and automate away the burdens of complex infrastructure.">
+{% endblock head %}
+
 {% extends "sidebar.html" %}
 {% block content %}
     <div class="main">
 
-        <div>
-            <h1 style="float: right;">telecomsteve</h1>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/telecomsteve_logo.png') }}" alt="telecomsteve DevOps consulting logo">
         </div>
 
         <div class="hero-scramble">
