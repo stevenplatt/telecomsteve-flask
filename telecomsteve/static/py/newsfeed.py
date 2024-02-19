@@ -14,7 +14,8 @@ def newsfeed(topic):
         # a list of sources used to pull in engineering news
         # source: https://hnrss.github.io/ (a hacker news rss feed)
         urls = ['https://www.cnbc.com/id/100727362/device/rss/rss.html',
-                'https://feeds.bbci.co.uk/news/business/rss.xml']
+                'https://feeds.bbci.co.uk/news/business/rss.xml',
+                'https://techcrunch.com/feed/']
 
     elif topic == 'engineering':
         # a list of sources used to pull in technology news
