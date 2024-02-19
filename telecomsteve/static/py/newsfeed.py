@@ -14,22 +14,18 @@ def newsfeed(topic):
         # a list of sources used to pull in engineering news
         # source: https://hnrss.github.io/ (a hacker news rss feed)
         urls = ['https://www.cnbc.com/id/100727362/device/rss/rss.html',
-                'https://feeds.bbci.co.uk/news/business/rss.xml',
-                'https://feeds.a.dj.com/rss/RSSMarketsMain.xml',
-                'https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml']
+                'https://feeds.bbci.co.uk/news/business/rss.xml']
 
     elif topic == 'engineering':
         # a list of sources used to pull in technology news
         urls = ['https://www.theverge.com/rss/index.xml',
                 'https://hnrss.org/frontpage',
                 'https://www.engadget.com/rss.xml',
-                'https://www.gamespot.com/feeds/mashup/',
-                'https://feeds.a.dj.com/rss/RSSWSJD.xml']
+                'https://www.gamespot.com/feeds/mashup/']
     
     elif topic == 'world':
         # a list of sources used to pull in world news
         urls = ['https://feeds.nbcnews.com/nbcnews/public/world',
-                'https://feeds.a.dj.com/rss/RSSWorldNews.xml',
                 'https://feeds.bbci.co.uk/news/world/rss.xml']
 
     feeds = [feedparser.parse(url)['entries'] for url in urls]
