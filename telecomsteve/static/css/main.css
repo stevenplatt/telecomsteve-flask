@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css?family=Roboto+Mono:100";
+@import "https://fonts.googleapis.com/css?family=Roboto+Mono:200";
 
 body {
 	font-family: "Roboto Mono", monospace;
@@ -37,7 +37,7 @@ h1 {
 .navblock {
 	margin: auto;
 	width: 100%;
-	height: 100%;
+	/* height: 100%; */
 	display: flex;
 }
 
