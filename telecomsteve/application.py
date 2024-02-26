@@ -25,6 +25,7 @@ def home():
 def research():
     return render_template('research.html')
 
+@application.route("/news", methods=["GET"])
 @application.route("/engineering", methods=["GET"])
 def engineering():
     content = newsfeed('engineering')
