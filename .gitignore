@@ -139,3 +139,6 @@ dmypy.json
 
 # GCloud creds
 *key.json
+
+# NPM modules
+node_modules/

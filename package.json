@@ -1,0 +1,29 @@
+{
+	"name": "telecomsteve-flask",
+	"version": "1.0.0",
+	"description": "A python flask version of the website https://telecomsteve.com",
+	"main": "",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/stevenplatt/telecomsteve-flask.git"
+	},
+	"keywords": [
+		"devops",
+		"platform",
+		"engineering",
+		"web3",
+		"blockchain"
+	],
+	"author": "Steven Platt",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/stevenplatt/telecomsteve-flask/issues"
+	},
+	"homepage": "https://github.com/stevenplatt/telecomsteve-flask#readme",
+	"dependencies": {
+		"@mozilla/readability": "^0.5.0"
+	}
+}
