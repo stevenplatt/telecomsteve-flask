@@ -3,7 +3,6 @@
 
 import os
 import datetime
-from urllib.parse import urlparse
 from flask import Flask, render_template, request, url_for
 from static.py.newsfeed import newsfeed
 from static.py.article_view import article
