@@ -3,10 +3,9 @@
 
 import os
 import datetime
-# from turtle import title
 from flask import Flask, render_template, request, url_for
-
 from static.py.newsfeed import newsfeed
+from static.py.article_view import article
 
 application = Flask(__name__)
 
@@ -30,17 +29,22 @@ def research():
 @application.route("/engineering", methods=["GET"])
 def engineering():
     content = newsfeed('engineering')
-    return render_template('news.html', news=content, blocked=filtered_urls, category='engineering')
+    return render_template('feeds.html', news=content, blocked=filtered_urls, category='engineering')
 
 @application.route("/finance", methods=["GET"])
 def finance():
     content = newsfeed('finance')
-    return render_template('news.html', news=content, blocked=filtered_urls, category='finance')
+    return render_template('feeds.html', news=content, blocked=filtered_urls, category='finance')
 
 @application.route("/web3", methods=["GET"])
 def web3():
     content = newsfeed('web3')
-    return render_template('news.html', news=content, blocked=filtered_urls, category='web3')
+    return render_template('feeds.html', news=content, blocked=filtered_urls, category='web3')
+
+@application.route('/article/<path:url>', methods=['GET'])
+def article_view(url):
+    title, byline, content = article(url)
+    return render_template('article.html', title=title, byline=byline, content=content)
 
 # run the app.
 if __name__ == "__main__":

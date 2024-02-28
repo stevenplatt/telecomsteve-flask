@@ -7,15 +7,10 @@
 {% block content %}
     <div class="main">
 
-        <div class="logo">
-            <img src="{{ url_for('static', filename='img/telecomsteve_logo.png') }}" alt="telecomsteve DevOps consulting logo">
-        </div>
+        <h1>{{ title }}</h1>
+        <p>{{ byline }}</p>
 
-        <div class="hero-scramble">
-            <div class="text-scramble"></div>
-        </div>
+        {{ content }}
         
     </div>
-
-    <script type="text/javascript" src="../static/js/text_scramble.js"></script>
 {% endblock content %}
