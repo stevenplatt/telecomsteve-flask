@@ -6,5 +6,7 @@ def article(url):
     article = simple_json_from_html_string(req.text, use_readability=True)
     title = article['title']
     byline = article['byline']
-    content = article['plain_text']
-    return title, byline, content
+    content = article['content']
+    plain_text = article['plain_text']
+    plain_content = article['plain_content']
+    return title, byline, content, plain_text, plain_content

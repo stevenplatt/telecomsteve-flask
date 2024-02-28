@@ -43,8 +43,10 @@ def web3():
 
 @application.route('/article/<path:url>', methods=['GET'])
 def article_view(url):
-    title, byline, content = article(url)
-    return render_template('article.html', title=title, byline=byline, content=content)
+    # source: https://github.com/alan-turing-institute/ReadabiliPy?tab=readme-ov-file#library
+    title, byline, content, plain_content, plain_text = article(url)
+    return render_template('article.html', title=title, byline=byline, content=content, 
+    plain_content=plain_content, plain_text=plain_text)
 
 # run the app.
 if __name__ == "__main__":

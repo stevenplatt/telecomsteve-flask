@@ -10,7 +10,7 @@
         <h1>{{ title }}</h1>
         <p>{{ byline }}</p>
 
-        {{ content }}
+        {{ content|safe }}
         
     </div>
 {% endblock content %}
