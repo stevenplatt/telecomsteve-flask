@@ -21,7 +21,6 @@ def newsfeed(topic):
         # a list of sources used to pull in technology news
         urls = ['https://www.theverge.com/rss/index.xml',
                 'https://hnrss.org/frontpage',
-                'https://www.engadget.com/rss.xml',
                 'https://www.gamespot.com/feeds/mashup/']
     
     elif topic == 'web3':
