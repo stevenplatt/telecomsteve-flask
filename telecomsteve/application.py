@@ -42,6 +42,10 @@ def web3():
     content = newsfeed('web3')
     return render_template('news.html', news=content, blocked=filtered_urls, category='web3')
 
+@application.route("/test")
+def test():
+    return render_template('readability.html')
+
 # run the app.
 if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be

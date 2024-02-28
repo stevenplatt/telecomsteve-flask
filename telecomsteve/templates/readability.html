@@ -6,8 +6,15 @@
 {% extends "sidebar.html" %}
 {% block content %}
     <div class="main">
+        <p> jhgkjh kjhg kjhg </p>
+        <h1 id="title"></h1>
+        <div id="content"></div>
 
-        
+        <script src="../static/js/readability.js"></script>
+        <script>
+            document.getElementById('title').textContent = article.title;
+            document.getElementById('content').innerHTML = article.content;
+        </script>
         
     </div>
 {% endblock content %}

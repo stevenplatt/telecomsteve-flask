@@ -24,6 +24,7 @@
 	},
 	"homepage": "https://github.com/stevenplatt/telecomsteve-flask#readme",
 	"dependencies": {
-		"@mozilla/readability": "^0.5.0"
+		"@mozilla/readability": "^0.5.0",
+		"jsdom": "^24.0.0"
 	}
 }
