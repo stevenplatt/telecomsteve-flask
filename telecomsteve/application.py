@@ -5,7 +5,6 @@ import os
 import datetime
 from flask import Flask, render_template, request, url_for
 from static.py.newsfeed import newsfeed
-from static.py.article_view import article
 
 application = Flask(__name__)
 
@@ -40,12 +39,6 @@ def finance():
 def web3():
     content = newsfeed('web3')
     return render_template('feeds.html', news=content, blocked=filtered_urls, category='web3')
-
-@application.route('/article/<path:url>', methods=['GET'])
-def article_view(url):
-    # source: https://github.com/alan-turing-institute/ReadabiliPy?tab=readme-ov-file#library
-    title, byline, content, plain_content, plain_text = article(url)
-    return render_template('article.html', title=title, article_content=content, link=url)
 
 # run the app.
 if __name__ == "__main__":

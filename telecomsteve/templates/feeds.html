@@ -31,7 +31,7 @@
             <div class="main-content">
             {% for story in news %}
                 {% if story['href'] != [] and story['domain'] not in blocked %}    
-                    <h3 class="news_accent"><a href="{{ url_for('article_view', url=story['link']) }}">{{ story['title'] }}</a>
+                    <h3 class="news_accent"><a href="{{ story['link'] }}">{{ story['title'] }}</a>
                     <br>
                         <span class="news_domain">{{ story['domain'] }}</span> </h3>
                     <br>
