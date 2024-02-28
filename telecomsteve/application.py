@@ -3,6 +3,7 @@
 
 import os
 import datetime
+from urllib.parse import urlparse
 from flask import Flask, render_template, request, url_for
 from static.py.newsfeed import newsfeed
 from static.py.article_view import article
@@ -10,7 +11,7 @@ from static.py.article_view import article
 application = Flask(__name__)
 
 # these urls are filtered because they are often behind a paywall
-filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com',
+filtered_urls = ['twitter.com', 'bloomberg.com', 'nytimes.com', 'wsj.com', 'politico.com', 'youtube.com',
                 'ft.com', 'economist.com', 'reuters.com', 'washingtonpost.com', 'filtered']
 filtered_terms = ['twitter', 'trump', 'roe', 'abortion', 'shooting', 'gun',
                 'first mover', 'elon', 'musk', 'chatgpt', 'LLM', 'ftx', 'sbf', 
@@ -45,8 +46,7 @@ def web3():
 def article_view(url):
     # source: https://github.com/alan-turing-institute/ReadabiliPy?tab=readme-ov-file#library
     title, byline, content, plain_content, plain_text = article(url)
-    return render_template('article.html', title=title, byline=byline, content=content, 
-    plain_content=plain_content, plain_text=plain_text)
+    return render_template('article.html', title=title, content=content, link=url)
 
 # run the app.
 if __name__ == "__main__":

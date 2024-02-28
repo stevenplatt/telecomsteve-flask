@@ -10,6 +10,20 @@ h1 {
 	color: #f1c40f;
 }
 
+img {
+	max-width: 100%;
+	height: auto;
+	overflow-clip-margin: content-box;
+	overflow: clip;
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+
+p {
+	padding-top: 1.5%;
+	padding-bottom: 1.5%;
+}
+
 /* Style page content */
 .main {
 	margin-left: 20%; /* Same as the width of the sidenav */
@@ -331,6 +345,11 @@ input[type="password" i]:focus {
 }
 
 @media screen and (max-width: 700px) {
+	p {
+		padding-top: 3%;
+		padding-bottom: 3%;
+	}
+
 	.navblock_text a {
 		padding: 16px;
 	}
@@ -357,13 +376,6 @@ input[type="password" i]:focus {
 @media screen and (max-width: 1100px) {
 	h1 {
 		font-size: 1.5em;
-	}
-
-	img {
-		width: 100%;
-		height: auto;
-		overflow-clip-margin: content-box;
-		overflow: clip;
 	}
 
 	.sidenav {
