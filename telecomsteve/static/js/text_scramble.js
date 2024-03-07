@@ -54,12 +54,12 @@ class TextScramble {
 }
 
 const phrases = [
-    'DevOps for startups and Web3',
+    'DevOps for AI and Web3',
     'CI pipelines that pass, the first time',
+    'Embed AI using Hugging Face Deep Learning Containers',
     'Hyperscale with Kubernetes',
-    'Operate peer-to-peer without infrastructure',
     'Repeatable testnets with Terraform',
-    'Eliminate configuration drift with ArgoCD'
+    'Operate peer-to-peer without infrastructure'
 ]
 
 const el = document.querySelector('.text-scramble');
@@ -68,7 +68,7 @@ const fx = new TextScramble(el);
 let counter = 0;
 const next = () => {
     fx.setText(phrases[counter]).then(()=>{
-        setTimeout(next,4000)
+        setTimeout(next,3500)
     })
     counter = (counter+1) % phrases.length
 }

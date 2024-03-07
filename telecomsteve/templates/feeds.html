@@ -7,19 +7,19 @@
             <h1>
                 <span style="color:#f1c40f">Engineering</span> &nbsp;
                 <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('finance') }}">Startups and Finance</a> &nbsp;
-                <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('web3') }}">Web3</a>
+                <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('web3') }}">AI and Web3</a>
             </h1>
         {% elif category == 'finance' %}
             <h1>
                 <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('engineering') }}">Engineering</a> &nbsp;
                 <span style="color:#f1c40f">Startups and Finance</span> &nbsp;
-                <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('web3') }}">Web3</a>
+                <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('web3') }}">AI and Web3</a>
             </h1>
         {% else %}
             <h1>
                 <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('engineering') }}">Engineering</a> &nbsp;
                 <a style="color:#cdd0d4; font-size:50%" href="{{ url_for('finance') }}">Startups and Finance</a> &nbsp;
-                <span style="color:#f1c40f">Web3</span>
+                <span style="color:#f1c40f">AI and Web3</span>
             </h1>
         {% endif %}
 
