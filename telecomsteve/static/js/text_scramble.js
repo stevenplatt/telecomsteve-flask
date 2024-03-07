@@ -56,7 +56,7 @@ class TextScramble {
 const phrases = [
     'DevOps for AI and Web3',
     'CI pipelines that pass, the first time',
-    'Embed AI using Hugging Face Deep Learning Containers',
+    'Embedded AI with Hugging Face Deep Learning Containers',
     'Hyperscale with Kubernetes',
     'Repeatable testnets with Terraform',
     'Operate peer-to-peer without infrastructure'
