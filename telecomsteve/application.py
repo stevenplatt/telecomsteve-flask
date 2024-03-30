@@ -1,6 +1,8 @@
 # python flask application powering telecomsteve.com
 # install requirements with 'pip3 install -r requirements.txt'
 
+# example site: https://www.eddiejaoude.io/
+
 import os
 import datetime
 from flask import Flask, render_template, request, url_for
