@@ -1,0 +1,98 @@
+{% extends "sidebar.html" %}
+{% block content %}
+    <div class="main">
+        <div>
+            <img src="../static/img/steven_platt.webp" alt="Steven Platt, PhD" class="about_photo">
+        </div>
+
+        <div class="about_text">
+            <h1>Steven Platt, PhD</h1>
+
+            <p>Hi, I'm Steven, but you can call me telecomsteve.</p>
+            <p>I am a full stack engineer, researcher, and mentor holding both an MBA and engineering PhD. 
+                I have 15 years of total engineering experience, with 6 years in scripting languages (Python and Javascript), and 2 years in Product and Engineering Management.</p>
+            <div class="about_links">
+                <a class="about_links" target="blank" href="https://www.linkedin.com/in/telecomsteve">LinkedIn</a>
+                <a class="about_links" target="blank" href="https://github.com/stevenplatt/telecomsteve-flask">GitHub</a>
+            </div>
+
+            <div class="main-content">
+                <h2 class="resume_accent">Education</h2>
+                <ul>
+                  <li>PhD. Blockchain Technologies, Pompeu Fabra University, Barcelona, Spain, 2018-2021</li>
+                  <li>M.S. Wireless Communications, Barcelona School of Telecommunications Engineering, Barcelona, Spain, 2017-2018</li>
+                  <li>MBA. Business Administration, Illinois State University, Normal, US, 2009-2012</li>
+                  <li>B.S. Electronic Systems Technology, Southern Illinois University at Carbondale, Carbondale, US, 2004-2007</li>
+                </ul>
+                <br>
+            
+                <h2 class="resume_accent">Experience</h2>
+            
+                <h3>O(1)Labs</h3>
+                <p><i>Senior Infrastructure Engineer</i>, San Francisco, US, 2021-current</p>
+                <ul>
+                  <li>Designed and built stress testing infrastructure to validate network consensus safety and the scaling limits of total user counts and block synchronization (bootstrap) within the Mina blockchain and protocol.</li>
+                  <li>Successfully identified and triaged two severity 0 (network-halting) bugs as part of internal validation ahead of protocol upgrades.</li>
+                  <li>Led the automation and rollout of "testnet", "mainnet", and "hard fork" network infrastructures using Terraform, Helm, 
+                    and Google Kubernetes Engine.</li>
+                </ul>
+            
+                <h3>Pompeu Fabra University</h3>
+                <p><i>Doctoral Researcher</i>, Barcelona, Spain, 2018-2021</p>
+                <ul>
+                  <li>Thesis: "Towards Generalized Blockchain Enabled Cellular Overlays".</li>
+                  <li>Wrote and taught the smart contract programming curriculum for a new "Blockchain Technologies" course focused on the Ethereum blockchain 
+                      and Solidity programming language.</li>
+                  <li>Published research at top ranked journals and conferences including MDPI Journal Sensors (SJR Q1) and IEEE
+                    GlobeCom.</li>
+                </ul>
+            
+                <h3>Yoptio</h3>
+                <p><i>Founder</i>, San Francisco, US, 2016-2018</p>
+                <ul>
+                  <li>Hired and managed an outsourced development team consisting of an account manager and three developers located in the United States and India.</li>
+                  <li>Built an MVP for a receptionist-as-a-service platform, supporting number ordering, dynamic call routing, and voice message transcription.</li>
+                </ul>
+
+                <h3>Twitter.com</h3>
+                <p><i>Systems Engineer II</i>, San Francisco, US, 2014-2017</p>
+                <ul>
+                  <li>Managed infrastructure deployments on 5 continents including DNS, server virtualization, and storage arrays.</li>
+                  <li>Migrated monolith VoIP infrastructure to a service-oriented design, reducing voice carrier costs globally 72%.</li>
+                  <li>Reduced site delivery time from 12 weeks to 2 by transitioning ISDN cricuits to internet peering using SIP.</li>
+                  <li>Mentored and trained support engineers as company headcount expanded 100% in 2 years.</li>
+                </ul>
+            
+                <h3>Salesforce.com</h3>
+                <p><i>Network Engineer</i>, San Francisco, US, 2012-2014</p>
+                <ul>
+                  <li>Principle network deployment engineer; completed network deployment for facilities in the United States,
+                    United Kingdom and Australia.</li>
+                  <li>Global support for Cisco LAN, WAN, Wireless and VPN, Juniper firewall, and F5 Load Balancer systems.</li>
+                </ul>
+            
+                <h3>Caterpillar Inc</h3>
+                <p><i>IT Analyst II</i>, Peoria, US, 2007-2012</p>
+                <ul>
+                  <li>Engineering lead for Enterprise Video technology and services.</li>
+                  <li>Completed platform design and field trials of new satellite connected "field view" industrial camera to enable remote machine support with deployments in Canada, Czech Republic, and the United States.</li>
+                </ul>
+                <br>
+
+                <h2 class="resume_accent">Open Source Contributions</h2>
+                <ul>
+                  <li><a href="https://github.com/MinaProtocol/mina" target="blank">mina</a>, 2021-current</li>
+                  <li><a href="https://gitlab.gnome.org/GNOME/gnome-shell" target="blank">gnome-shell</a>, 2020</li>
+                </ul>
+                <br>
+
+                <h2 class="resume_accent">Languages and Tools</h2>
+                <ul>
+                  <li>Python, Go, Javascript, Bash, YAML, HCL, Solidity, SQL</li>
+                  <li>Linux, AWS, GCP, Azure, Docker, Kubernetes, Ansible, Puppet, Terraform, Engineering Management</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}

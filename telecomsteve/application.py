@@ -19,9 +19,17 @@ filtered_terms = ['twitter', 'trump', 'roe', 'abortion', 'shooting', 'gun',
 def home():
     return render_template('index.html')
 
+@application.route("/about", methods=["GET"])
+def about():
+    return render_template('about.html')
+
 @application.route("/research", methods=["GET"])
 def research():
     return render_template('research.html')
+
+@application.route("/schedule", methods=["GET"])
+def schedule():
+    return render_template('schedule.html')
 
 @application.route("/news", methods=["GET"])
 @application.route("/feeds", methods=["GET"])
