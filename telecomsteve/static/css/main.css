@@ -15,7 +15,7 @@ h1 {
 	margin-left: 20%; /* Same as the width of the sidenav */
 	font-size: 18px; /* Increased text to enable scrolling */
 	line-height: 35px;
-	padding: 10%;
+	padding: 5% 10%;
 }
 
 .main-content {
