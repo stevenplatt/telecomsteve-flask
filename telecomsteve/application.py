@@ -25,6 +25,10 @@ def home():
 def about():
     return render_template('about.html')
 
+@application.route("/contact", methods=["GET"])
+def contact():
+    return render_template('contact.html')
+
 @application.route("/research", methods=["GET"])
 def research():
     return render_template('research.html')
