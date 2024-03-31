@@ -54,7 +54,7 @@ class TextScramble {
 }
 
 const phrases = [
-    'DevOps for AI and Web3',
+    'DevOps as a service',
     'CI pipelines that pass, the first time',
     'Automate model training with Kubeflow',
     'Hyperscale with Kubernetes',
