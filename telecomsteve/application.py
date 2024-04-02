@@ -33,9 +33,17 @@ def contact():
 def research():
     return render_template('research.html')
 
-@application.route("/schedule", methods=["GET"])
-def schedule():
-    return render_template('schedule.html')
+@application.route("/consulting", methods=["GET"])
+def consulting():
+    return render_template('meetings/consulting.html')
+
+@application.route("/interview-30", methods=["GET"])
+def interview_30():
+    return render_template('meetings/interview_30.html')
+
+@application.route("/interview-60", methods=["GET"])
+def interview_60():
+    return render_template('meetings/interview_60.html')
 
 @application.route("/news", methods=["GET"])
 @application.route("/feeds", methods=["GET"])
