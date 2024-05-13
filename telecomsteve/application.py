@@ -7,6 +7,7 @@ import os
 import datetime
 from flask import Flask, render_template, request, url_for
 from static.py.newsfeed import newsfeed
+from static.py.scraper import scrape_webpage
 
 application = Flask(__name__)
 
@@ -61,6 +62,12 @@ def finance():
 def web3():
     content = newsfeed('web3')
     return render_template('feeds.html', news=content, blocked=filtered_urls, category='web3')
+
+@application.route("/article")
+def article():
+    url = request.args.get('url', default = "", type = str)
+    title, link_list, paragraph_list, image_list = scrape_webpage(url)
+    return render_template('article.html', title=title, links=link_list, paragraphs=paragraph_list, images=image_list)
 
 # run the app.
 if __name__ == "__main__":

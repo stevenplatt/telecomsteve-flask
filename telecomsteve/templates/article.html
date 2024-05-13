@@ -1,0 +1,25 @@
+{% extends "sidebar.html" %}
+{% block content %}
+    <div class="main">
+        <h1>{{ title }}</h1>
+
+        <!-- <h2>Links</h2>
+        <ul>
+            {% for link in links %}
+            <li><a href="{{ link }}">{{ link }}</a></li>
+            {% endfor %}
+        </ul> -->
+
+        {% if images %}
+            <img src="{{ images[0] }}" alt="Image" style="max-width: 100%;"">
+        {% endif %}
+
+        <!-- {% for image in images %}
+            <img src="{{ image }}" alt="Image">
+        {% endfor %} -->
+
+        {% for paragraph in paragraphs %}
+            <p>{{ paragraph }}</p>
+        {% endfor %}
+    </div>
+{% endblock content %}
