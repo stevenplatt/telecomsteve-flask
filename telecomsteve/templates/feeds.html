@@ -27,7 +27,35 @@
             <p>Select a topic above to change news sources.</p>
             <br>
             
-            <!-- construct each news story -->
+            <script src="{{ url_for('static', filename='../static/js/newsfeed.js') }}"></script> 
+            <script>
+                // Call the newsfeed function and then generate the HTML content
+                newsfeed('finance').then(() => {
+                    let newsContainer = document.getElementById('newsContainer');
+            
+                    for (let story of news) {
+                        if (story.href.length > 0 && !filteredUrls.includes(story.domain)) {
+                            let titleElement = document.createElement('h3');
+                            titleElement.className = 'news_accent';
+            
+                            let linkElement = document.createElement('a');
+                            linkElement.href = story.link;
+                            linkElement.textContent = story.title;
+            
+                            titleElement.appendChild(linkElement);
+                            newsContainer.appendChild(titleElement);
+            
+                            let domainElement = document.createElement('span');
+                            domainElement.className = 'news_domain';
+                            domainElement.textContent = story.domain;
+            
+                            newsContainer.appendChild(domainElement);
+                        }
+                    }
+                });
+            </script>
+
+            <!-- construct each news story 
             <div class="main-content">
             {% for story in news %}
                 {% if story['href'] != [] and story['domain'] not in blocked %}    
@@ -38,6 +66,6 @@
                 {% else %}
                 {% endif %}
             {% endfor %}
-            </div>
+            </div> -->
     </div>
 {% endblock content %}
