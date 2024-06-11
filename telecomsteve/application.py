@@ -33,7 +33,7 @@ def contact():
 def research():
     return render_template('research.html')
 
-@application.route("/consulting", methods=["GET"])
+@application.route("/meet", methods=["GET"])
 def consulting():
     return render_template('meetings/consulting.html')
 
