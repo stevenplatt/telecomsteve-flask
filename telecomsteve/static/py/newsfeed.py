@@ -20,7 +20,8 @@ def newsfeed(topic):
     elif topic == 'engineering':
         # a list of sources used to pull in technology news
         urls = ['https://www.theverge.com/rss/index.xml',
-                'https://hnrss.org/frontpage']
+                'https://hnrss.org/frontpage',
+                'https://leaddev.com/content-piece-and-series/rss.xml']
     
     elif topic == 'web3':
         # a list of sources used to pull in world news
