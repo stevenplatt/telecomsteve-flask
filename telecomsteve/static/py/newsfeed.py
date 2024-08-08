@@ -19,7 +19,7 @@ def newsfeed(topic):
 
     elif topic == 'engineering':
         # a list of sources used to pull in technology news
-        urls = ['https://www.techmeme.com/feed.xml',
+        urls = ['https://www.theverge.com/rss/index.xml',
                 'https://hnrss.org/frontpage',
                 'https://leaddev.com/content-piece-and-series/rss.xml']
     
@@ -52,4 +52,4 @@ def newsfeed(topic):
 
     return feed[:30]
 
-# https://www.theverge.com/rss/index.xml
+# 'https://www.techmeme.com/feed.xml'
