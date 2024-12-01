@@ -27,6 +27,9 @@ RUN pip3 install -r requirements.txt
 # Copy the rest of the application
 COPY . /workspace
 
+# Set workspace permissions
+RUN chown -R $USERNAME:$USERNAME /workspace
+
 # Set the default shell and user
 ENV SHELL /bin/bash
 USER $USERNAME
