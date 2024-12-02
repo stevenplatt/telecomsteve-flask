@@ -34,3 +34,9 @@ def test_engineering_feeds(client):
     """Test that engineering feeds page loads successfully"""
     rv = client.get('/engineering')
     assert rv.status_code == 200
+
+def test_filtered_urls_blocked():
+    """Test that filtered URLs are properly blocked"""
+    from application import filtered_urls
+    test_url = "twitter.com/test"
+    assert any(blocked in test_url for blocked in filtered_urls)
